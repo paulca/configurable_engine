@@ -1,4 +1,2 @@
-module ConfigurableEngine
-  class Engine < Rails::Engine
-  end
-end
+require 'configurable_engine/engine'
+require 'configurable_engine/configurables_controller'

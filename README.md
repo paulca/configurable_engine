@@ -38,9 +38,17 @@ Since Configurable is an ActiveRecord model, if you want to update the config, c
 
 Configurable comes with a web interface that is available to your app straight away at `http://localhost:3000/admin/configurable`.
 
-If you want to add a layout, or protect the configurable controller, create `app/controllers/admin/application_controller.rb` which would look something like this:
+If you want to add a layout, or protect the configurable controller, create `app/controllers/admin/configurables_controller.rb` as such:
 
-    class Admin::ApplicationController < ApplicationController
+    bundle exec rails generate controller admin/configurables
+
+and include `ConfigurableEngine::ConfigurablesController`, eg.
+
+    class Admin::ConfigurablesController < ApplicationController
+      # include the engine controller actions
+      include ConfigurablesController::ConfigurablesController
+    
+      # add your own filter(s) / layout
       before_filter :protect_my_code
       layout 'admin'
     end
