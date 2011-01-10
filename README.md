@@ -24,9 +24,9 @@ There are two parts to how behavior works. First of all there is a config file, 
 
 For example, if you wanted to have access to a config variable "site_title", put this in configurable.yml:
 
-  site_title:
-    name: Site Title
-    default: My Site
+    site_title:
+      name: Site Title
+      default: My Site
   
 Now, within your app, you can access `Configurable[:site\_title]` (or `Configurable.site_title` if you prefer).
 
