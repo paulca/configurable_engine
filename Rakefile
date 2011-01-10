@@ -16,7 +16,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/paulca/configurable_engine"
   gem.license = "MIT"
   gem.summary = %Q{Database-backed configuration for Rails 3, with defaults from config file.}
-  gem.description = %Q{Configurable allows you to set up config variables in a config file, specifying default values for all environments. These variables can then be set on a per-app basis using a user facing configuration screen. }
+  gem.description = %Q{Configurable is a Rails 3 engine that allows you to set up config variables in a config file, specifying default values for all environments. These variables can then be set on a per-app basis using a user facing configuration screen. }
   gem.email = "paul@rslw.com"
   gem.authors = ["Paul Campbell"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,

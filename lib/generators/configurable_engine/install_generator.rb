@@ -1,5 +1,5 @@
 require 'rails/generators'
-module Configurable
+module ConfigurableEngine
 class InstallGenerator < Rails::Generators::Base
   include Rails::Generators::Migration
 

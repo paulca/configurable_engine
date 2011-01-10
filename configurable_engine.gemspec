@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Paul Campbell"]
   s.date = %q{2011-01-10}
-  s.description = %q{Configurable allows you to set up config variables in a config file, specifying default values for all environments. These variables can then be set on a per-app basis using a user facing configuration screen. }
+  s.description = %q{Configurable is a Rails 3 engine that allows you to set up config variables in a config file, specifying default values for all environments. These variables can then be set on a per-app basis using a user facing configuration screen. }
   s.email = %q{paul@rslw.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
