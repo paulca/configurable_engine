@@ -4,7 +4,10 @@ describe Configurable do
   
   describe ".keys" do
     it "should collect the keys" do
-      Configurable.keys.should == ['notify_email', 'log_out_sso']
+      Configurable.keys.should == ['notify_email',
+                                   'log_out_sso',
+                                   'conversion_rate',
+                                   'important_number']
     end
   end
   
@@ -33,6 +36,26 @@ describe Configurable do
       it "should typecast the new value" do
         Configurable[:log_out_sso].should == true
         Configurable.log_out_sso?.should == true
+      end
+    end
+    
+    context "with a decimal value" do
+      before do
+        Configurable.create!(:name => 'conversion_rate', :value => 1.2)
+      end
+      
+      it "should typecast the value" do
+        Configurable.conversion_rate.should == BigDecimal.new('1.2')
+      end
+    end
+    
+    context "with an integer value" do
+      before do
+        Configurable.create!(:name => 'important_number', :value => 100)
+      end
+      
+      it "should typecast the value" do
+        Configurable.important_number.should == 100
       end
     end
   end

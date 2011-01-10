@@ -7,3 +7,13 @@ log_out_sso:
   name: Log user out of SSO on logout?
   type: boolean
   default: no
+
+conversion_rate:
+  name: Conversion Rate
+  type: decimal
+  default: 1.0
+
+important_number:
+  name: Important Number
+  type: integer
+  default: 1

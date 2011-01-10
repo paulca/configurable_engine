@@ -17,6 +17,10 @@ class Configurable < ActiveRecord::Base
     case self.defaults[key][:type]
     when 'boolean'
       value == true or value == 1 or value == "1" or value == "t"
+    when 'decimal'
+      BigDecimal.new(value.to_s)
+    when 'integer'
+      value.to_i
     else
       value
     end

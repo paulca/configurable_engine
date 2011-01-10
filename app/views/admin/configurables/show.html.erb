@@ -3,7 +3,13 @@
 <%= form_tag(admin_configurable_path, :method => :put) do -%>
   <%- Configurable.defaults.each do |key, options| -%>
     <%= label_tag key, options[:name] %>
-    <%= text_field_tag key, Configurable.send(key) %>
+    <%- if options[:type] == 'password' -%>
+      <%= text_area_tag key, Configurable.send(key) %>
+    <%- elsif options[:type] == 'text' -%>
+      <%= password_field_tag key, Configurable.send(key) %>
+    <%- else -%>
+      <%= text_field_tag key, Configurable.send(key) %>
+    <%- end -%>
   <%- end -%>
   
   <%= submit_tag 'Save' %>
