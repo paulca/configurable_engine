@@ -83,7 +83,11 @@ Within the `dummy` folder, run:
     bundle exec rspec spec
     bundle exec cucumber features
 
-== Copyright
+## Contributing ##
+
+All contributions are welcome. Just fork the code, ensure your changes include a test, ensure all the current tests pass and send a pull request.
+
+## Copyright ##
 
 Copyright (c) 2011 Paul Campbell. See LICENSE.txt for
 further details.
