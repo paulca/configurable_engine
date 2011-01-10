@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{configurable_engine}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Paul Campbell"]
@@ -23,13 +23,14 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
-    "app/controllers/admin/application_controller.rb",
     "app/controllers/admin/configurables_controller.rb",
     "app/models/configurable.rb",
     "app/views/admin/configurables/show.html.erb",
     "config/routes.rb",
     "configurable_engine.gemspec",
     "lib/configurable_engine.rb",
+    "lib/configurable_engine/configurables_controller.rb",
+    "lib/configurable_engine/engine.rb",
     "lib/generators/configurable_engine/install_generator.rb",
     "lib/generators/configurable_engine/templates/configurable.yml",
     "lib/generators/configurable_engine/templates/migration.rb"
