@@ -7,7 +7,8 @@ describe Configurable do
       Configurable.keys.should == ['notify_email',
                                    'log_out_sso',
                                    'conversion_rate',
-                                   'important_number']
+                                   'important_number',
+                                   'long_list']
     end
   end
   
@@ -56,6 +57,27 @@ describe Configurable do
       
       it "should typecast the value" do
         Configurable.important_number.should == 100
+      end
+    end
+    
+    context "with a list value" do
+      context "default" do
+        it "should default to a list" do
+          Configurable.long_list.should == [["One", 1], ["Two", 2], ["Three", 3]]
+        end
+      end
+      
+      context "with a value" do
+        before do
+          Configurable.create!({:name => "long_list", 
+                                :value => "Paul,7\nCiara,8\nBrian,9"})
+        end
+        
+        it "should update the list" do
+          Configurable.long_list.should == [["Paul", "7"],
+                                            ["Ciara", "8"],
+                                            ["Brian", "9"]]
+        end
       end
     end
   end

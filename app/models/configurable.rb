@@ -21,6 +21,9 @@ class Configurable < ActiveRecord::Base
       BigDecimal.new(value.to_s)
     when 'integer'
       value.to_i
+    when 'list'
+      return value if value.is_a?(Array)
+      value.split("\n").collect{ |v| v.split(',') } unless value.is_a?(Array)
     else
       value
     end
