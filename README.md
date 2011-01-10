@@ -28,7 +28,7 @@ For example, if you wanted to have access to a config variable "site_title", put
       name: Site Title
       default: My Site
   
-Now, within your app, you can access `Configurable[:site\_title]` (or `Configurable.site_title` if you prefer).
+Now, within your app, you can access `Configurable[:site_title]` (or `Configurable.site_title` if you prefer).
 
 Since Configurable is an ActiveRecord model, if you want to update the config, create a Configurable record in the database:
 
