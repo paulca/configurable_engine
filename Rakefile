@@ -15,13 +15,13 @@ Jeweler::Tasks.new do |gem|
   gem.name = "configurable"
   gem.homepage = "http://github.com/paulca/configurable"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Database-backed configuration for Rails 3, with defaults from config file.}
+  gem.description = %Q{Configurable allows you to set up config variables in a config file, specifying default values for all environments. These variables can then be set on a per-app basis using a user facing configuration screen. }
   gem.email = "paul@rslw.com"
   gem.authors = ["Paul Campbell"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
-  #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
+  # gem.add_runtime_dependency 'jabber4r', '> 0.1'
   #  gem.add_development_dependency 'rspec', '> 1.2.3'
 end
 Jeweler::RubygemsDotOrgTasks.new

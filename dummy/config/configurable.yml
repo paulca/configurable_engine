@@ -1,0 +1,9 @@
+notify_email:
+  name: Notify Email
+  type: string
+  default: mreider@engineyard.com
+
+log_out_sso:
+  name: Log user out of SSO on logout?
+  type: boolean
+  default: no

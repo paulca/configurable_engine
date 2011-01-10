@@ -1,0 +1,10 @@
+<h2>Config</h2>
+
+<%= form_tag(admin_configurable_path, :method => :put) do -%>
+  <%- Configurable.defaults.each do |key, options| -%>
+    <%= label_tag key, options[:name] %>
+    <%= text_field_tag key, Configurable.send(key) %>
+  <%- end -%>
+  
+  <%= submit_tag 'Save' %>
+<%- end -%>
