@@ -1,7 +1,12 @@
 PATH
   remote: ../
   specs:
-    configurable (0.0.1)
+    configurable_engine (0.0.1)
+      cucumber
+      jeweler
+      rails (~> 3.0.0)
+      rake
+      rspec
 
 GEM
   remote: http://rubygems.org/
@@ -68,7 +73,12 @@ GEM
       rake (>= 0.8.7)
     gherkin (2.3.3)
       json (~> 1.4.6)
+    git (1.2.5)
     i18n (0.5.0)
+    jeweler (1.5.2)
+      bundler (~> 1.0.0)
+      git (>= 1.2.5)
+      rake
     json (1.4.6)
     json_pure (1.4.6)
     launchy (0.3.7)
@@ -144,7 +154,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara (= 0.3.9)
-  configurable!
+  configurable_engine!
   cucumber
   cucumber-rails
   database_cleaner

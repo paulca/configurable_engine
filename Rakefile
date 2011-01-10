@@ -12,8 +12,8 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "configurable"
-  gem.homepage = "http://github.com/paulca/configurable"
+  gem.name = "configurable_engine"
+  gem.homepage = "http://github.com/paulca/configurable_engine"
   gem.license = "MIT"
   gem.summary = %Q{Database-backed configuration for Rails 3, with defaults from config file.}
   gem.description = %Q{Configurable allows you to set up config variables in a config file, specifying default values for all environments. These variables can then be set on a per-app basis using a user facing configuration screen. }
@@ -22,6 +22,7 @@ Jeweler::Tasks.new do |gem|
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
   gem.add_runtime_dependency 'rails', '~>3.0.0'
+  gem.files = FileList["[A-Za-z]*", "app/**/*", "config/*"]
   #  gem.add_development_dependency 'rspec', '> 1.2.3'
 end
 Jeweler::RubygemsDotOrgTasks.new

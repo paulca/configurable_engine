@@ -14,7 +14,7 @@ Configurable is available as a Ruby gem. Simply add it to your Rails 3 app's `Ge
 
     gem 'configurable'
 
-Then run the `configurable:install` generator:
+Then run the `configurable_engine:install` generator:
 
     rails generate configurable:install
 
