@@ -1,6 +1,6 @@
 # Configurable #
 
-A Rails 3 configuration plugin. An update to [Behavior](http://github.com/paulca/behavior).
+A Rails 3 configuration engine. An update to [Behavior](http://github.com/paulca/behavior) for Rails 3.
 
 ## How it works ##
 
@@ -12,17 +12,17 @@ If you or your app users need to change these variables, Configurable stores new
 
 Configurable is available as a Ruby gem. Simply add it to your Rails 3 app's `Gemfile`:
 
-    gem 'configurable'
+    gem 'configurable_engine'
 
 Then run the `configurable_engine:install` generator:
 
-    rails generate configurable:install
+    rails generate configurable_engine:install
 
 ## Usage ##
 
-There are two parts to how behavior works. First of all there is a config file, config/behavior.yml. This file controls the variables that are allowed to be set in the app.
+There are two parts to how behavior works. First of all there is a config file, config/configurable.yml. This file controls the variables that are allowed to be set in the app.
 
-For example, if you wanted to have access to a config variable "site_title", put this in behavior.yml:
+For example, if you wanted to have access to a config variable "site_title", put this in configurable.yml:
 
   site_title:
     name: Site Title
@@ -30,13 +30,13 @@ For example, if you wanted to have access to a config variable "site_title", put
   
 Now, within your app, you can access `Configurable[:site\_title]` (or `Configurable.site_title` if you prefer).
 
-If you want to update the config, create a Configurable record in the database:
+Since Configurable is an ActiveRecord model, if you want to update the config, create a Configurable record in the database:
 
     Configurable.create!(:name => 'site_title', :value => 'My New Site')
     
 ## Web Interface ##
 
-Using Rails 3's Engines feature, Configurable comes with a web interface that is available to your app straight away at `http://localhost:3000/admin/configurable`.
+Configurable comes with a web interface that is available to your app straight away at `http://localhost:3000/admin/configurable`.
 
 If you want to add a layout, or protect the configurable controller, create `app/controllers/admin/application_controller.rb` which would look something like this:
 
