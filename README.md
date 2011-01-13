@@ -46,7 +46,7 @@ and include `ConfigurableEngine::ConfigurablesController`, eg.
 
     class Admin::ConfigurablesController < ApplicationController
       # include the engine controller actions
-      include ConfigurablesController::ConfigurablesController
+      include ConfigurableEngine::ConfigurablesController
     
       # add your own filter(s) / layout
       before_filter :protect_my_code
