@@ -16,7 +16,7 @@ class Configurable < ActiveRecord::Base
     value = find_by_name(key).try(:value) || self.defaults[key][:default]
     case self.defaults[key][:type]
     when 'boolean'
-      value == true or value == 1 or value == "1" or value == "t"
+      [true, 1, "1", "t", "true"].include?(value)
     when 'decimal'
       BigDecimal.new(value.to_s)
     when 'integer'

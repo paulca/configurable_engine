@@ -3,7 +3,9 @@
 <%= form_tag(admin_configurable_path, :method => :put) do -%>
   <%- Configurable.defaults.each do |key, options| -%>
     <%= label_tag key, options[:name] %>
-    <%- if options[:type] == 'password' -%>
+    <%- if options[:type] == 'boolean' %>
+      <%= check_box_tag key, key, true, Configurable.send(key) %>
+    <%- elsif options[:type] == 'password' -%>
       <%= password_field_tag key, Configurable.send(key) %>
     <%- elsif options[:type] == 'text' -%>
       <%= text_area_tag key, Configurable.send(key) %>
