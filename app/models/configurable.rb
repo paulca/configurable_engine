@@ -9,7 +9,7 @@ class Configurable < ActiveRecord::Base
   end
   
   def self.keys
-    self.defaults.collect { |k,v| k.to_s }
+    self.defaults.collect { |k,v| k.to_s }.sort
   end
   
   def self.[](key)

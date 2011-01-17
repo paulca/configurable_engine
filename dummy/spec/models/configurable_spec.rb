@@ -4,11 +4,12 @@ describe Configurable do
   
   describe ".keys" do
     it "should collect the keys" do
-      Configurable.keys.should == ['notify_email',
-                                   'log_out_sso',
-                                   'conversion_rate',
+      Configurable.keys.should == ['conversion_rate',
                                    'important_number',
-                                   'long_list']
+                                   'log_out_sso',
+                                   'long_list',
+                                   'notify_email'
+                                   ]
     end
   end
   
