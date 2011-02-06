@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-group :development
+group :development do
   gem 'rake'
   gem 'jeweler'
   gem 'rspec'
