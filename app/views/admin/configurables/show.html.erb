@@ -2,18 +2,21 @@
 
 <%= form_tag(admin_configurable_path, :method => :put) do -%>
   <%- Configurable.defaults.each do |key, options| -%>
-    <%= label_tag key, options[:name] %>
-    <%- if options[:type] == 'boolean' %>
-      <%= check_box_tag key, "1", Configurable.send(key) %>
-    <%- elsif options[:type] == 'password' -%>
-      <%= password_field_tag key, Configurable.send(key) %>
-    <%- elsif options[:type] == 'text' -%>
-      <%= text_area_tag key, Configurable.send(key) %>
-    <%- elsif options[:type] == 'list' -%>
-      <%= text_area_tag key, Configurable.send(key).collect{ |a| a.join(",")}.join("\n") %>
-    <%- else -%>
-      <%= text_field_tag key, Configurable.send(key) %>
-    <%- end -%>
+    <div class="configurable">
+      <%= label_tag key, options[:name] %>
+      <%- if options[:type] == 'boolean' %>
+        <%= hidden_field_tag key, "0", Configurable.send(key) %>
+        <%= check_box_tag key, "1", Configurable.send(key) %>
+      <%- elsif options[:type] == 'password' -%>
+        <%= password_field_tag key, Configurable.send(key) %>
+      <%- elsif options[:type] == 'text' -%>
+        <%= text_area_tag key, Configurable.send(key) %>
+      <%- elsif options[:type] == 'list' -%>
+        <%= text_area_tag key, Configurable.send(key).collect{ |a| a.join(",")}.join("\n") %>
+      <%- else -%>
+        <%= text_field_tag key, Configurable.send(key) %>
+      <%- end -%>
+    </div>
   <%- end -%>
   
   <%= submit_tag 'Save' %>
