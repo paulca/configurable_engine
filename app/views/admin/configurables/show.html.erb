@@ -5,7 +5,7 @@
     <div class="configurable">
       <%= label_tag key, options[:name] %>
       <%- if options[:type] == 'boolean' %>
-        <%= hidden_field_tag key, "0", Configurable.send(key) %>
+        <%= hidden_field_tag key, "0" %>
         <%= check_box_tag key, "1", Configurable.send(key) %>
       <%- elsif options[:type] == 'password' -%>
         <%= password_field_tag key, Configurable.send(key) %>
