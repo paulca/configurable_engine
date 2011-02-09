@@ -1,7 +1,8 @@
 <h2>Config</h2>
 
 <%= form_tag(admin_configurable_path, :method => :put) do -%>
-  <%- Configurable.defaults.each do |key, options| -%>
+  <%- Configurable.keys.each do |key| -%>
+    <%- options = Configurable.defaults[key] -%>
     <div class="configurable">
       <%= label_tag key, options[:name] %>
       <%- if options[:type] == 'boolean' %>
