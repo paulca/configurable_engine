@@ -24,6 +24,28 @@ describe Configurable do
     end
   end
 
+  describe ".[]=" do
+    context "with no saved value" do
+      it "creates a new entry" do
+        Configurable[:notify_email] = "john@example.com"
+        Configurable.find_by_name('notify_email').value.should == 'john@example.com'
+        Configurable.count.should == 1
+      end
+    end
+
+    context "with a saved value" do
+      before do
+        Configurable.create!(:name => 'notify_email', :value => 'paul@rslw.com')
+      end
+
+      it "updates the existing value" do
+        Configurable[:notify_email] = "john@example.com"
+        Configurable.find_by_name('notify_email').value.should == 'john@example.com'
+        Configurable.count.should == 1
+      end
+    end
+  end
+
   describe ".[]" do
     context "with no saved value" do
       it "shoud pick up the default value" do
@@ -101,6 +123,11 @@ describe Configurable do
 
     it "should return the correct value" do
       Configurable.notify_email.should == 'mreider@engineyard.com'
+    end
+
+    it "should assign the correct value" do
+      Configurable.notify_email = 'john@example.com'
+      Configurable.notify_email.should == 'john@example.com'
     end
   end
 

@@ -14,6 +14,15 @@ class Configurable < ActiveRecord::Base
     self.defaults.collect { |k,v| k.to_s }.sort
   end
 
+  def self.[]=(key, value)
+    exisiting = find_by_name(key)
+    if exisiting
+      exisiting.update_attribute(:value, value)
+    else
+      create(:name => key.to_s, :value => value)
+    end
+  end
+
   def self.[](key)
     value = find_by_name(key).try(:value) || self.defaults[key][:default]
     case self.defaults[key][:type]
@@ -32,9 +41,13 @@ class Configurable < ActiveRecord::Base
   end
 
   def self.method_missing(name, *args)
-    name_stripped = name.to_s.gsub('?', '')
+    name_stripped = name.to_s.sub(/[\?=]$/, '')
     if self.keys.include?(name_stripped)
-      self[name_stripped]
+      if name.to_s.end_with?('=')
+        self[name_stripped] = args.first
+      else
+        self[name_stripped]
+      end
     else
       super
     end
