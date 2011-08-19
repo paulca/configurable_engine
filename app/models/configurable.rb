@@ -1,5 +1,5 @@
 class Configurable < ActiveRecord::Base
-  
+
   def self.defaults
     HashWithIndifferentAccess.new(
       YAML.load_file(
@@ -7,12 +7,14 @@ class Configurable < ActiveRecord::Base
       )
     )
   end
-  
+
   def self.keys
     self.defaults.collect { |k,v| k.to_s }.sort
   end
-  
+
   def self.[](key)
+    return self.defaults[key][:default] unless table_exists?
+
     value = find_by_name(key).try(:value) || self.defaults[key][:default]
     case self.defaults[key][:type]
     when 'boolean'
@@ -28,7 +30,7 @@ class Configurable < ActiveRecord::Base
       value
     end
   end
-  
+
   def self.method_missing(name, *args)
     name_stripped = name.to_s.gsub('?', '')
     if self.keys.include?(name_stripped)
@@ -37,5 +39,5 @@ class Configurable < ActiveRecord::Base
       super
     end
   end
-  
+
 end
