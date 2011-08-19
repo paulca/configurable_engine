@@ -1,10 +1,9 @@
 PATH
   remote: ../
   specs:
-    configurable_engine (0.2.5)
-      activerecord (~> 3.0)
-      builder (~> 2.1.2)
-      rails (~> 3.0)
+    configurable_engine (0.2.8)
+      activerecord (~> 3)
+      rails (~> 3)
 
 GEM
   remote: http://rubygems.org/

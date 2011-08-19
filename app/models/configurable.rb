@@ -1,4 +1,5 @@
 class Configurable < ActiveRecord::Base
+
   validates_presence_of :name
   validates_uniqueness_of :name
 
@@ -24,6 +25,8 @@ class Configurable < ActiveRecord::Base
   end
 
   def self.[](key)
+    return self.defaults[key][:default] unless table_exists?
+
     value = find_by_name(key).try(:value) || self.defaults[key][:default]
     case self.defaults[key][:type]
     when 'boolean'
