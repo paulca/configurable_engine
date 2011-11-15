@@ -20,7 +20,7 @@ Then run the `configurable_engine:install` generator:
 
 ## Usage ##
 
-There are two parts to how behavior works. First of all there is a config file, config/configurable.yml. This file controls the variables that are allowed to be set in the app.
+There are two parts to how configurable_engine works. First of all there is a config file, config/configurable.yml. This file controls the variables that are allowed to be set in the app.
 
 For example, if you wanted to have access to a config variable "site_title", put this in configurable.yml:
 
@@ -53,7 +53,7 @@ and include `ConfigurableEngine::ConfigurablesController`, eg.
       layout 'admin'
     end
 
-If you want to control how the fields in the admin interface appear, you can add additional params in your behavior.yml file:
+If you want to control how the fields in the admin interface appear, you can add additional params in your configurable.yml file:
 
     site_title:
       name: Name of Your Site   # sets the edit label
