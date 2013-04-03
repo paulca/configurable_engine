@@ -1,14 +1,16 @@
 class Configurable < ActiveRecord::Base
 
-  validates_presence_of :name
-  validates_uniqueness_of :name
+  after_save :invalidate_cache
+
+  validates_presence_of    :name
+  validates_uniqueness_of  :name
 
   def self.defaults
-    HashWithIndifferentAccess.new(
-      YAML.load_file(
-        Rails.root.join('config', 'configurable.yml')
+    @defaults ||= HashWithIndifferentAccess.new(
+        YAML.load_file(
+          Rails.root.join('config', 'configurable.yml')
+        )
       )
-    )
   end
 
   def self.keys
@@ -27,7 +29,11 @@ class Configurable < ActiveRecord::Base
   def self.[](key)
     return self.defaults[key][:default] unless table_exists?
 
-    value = find_by_name(key).try(:value) || self.defaults[key][:default]
+    value = Rails.cache.fetch("configurable_engine:#{key}") {
+      find_by_name(key).try(:value)
+    }
+
+    value ||= self.defaults[key][:default]
     case self.defaults[key][:type]
     when 'boolean'
       [true, 1, "1", "t", "true"].include?(value)
@@ -56,4 +62,9 @@ class Configurable < ActiveRecord::Base
     end
   end
 
+  private
+
+  def invalidate_cache
+    Rails.cache.delete("configurable_engine:#{self.name}")
+  end
 end
