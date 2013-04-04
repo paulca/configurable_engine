@@ -5,12 +5,14 @@ class Configurable < ActiveRecord::Base
   validates_presence_of    :name
   validates_uniqueness_of  :name
 
+  validate :type_of_value
+
   def self.defaults
     @defaults ||= HashWithIndifferentAccess.new(
-        YAML.load_file(
-          Rails.root.join('config', 'configurable.yml')
-        )
+      YAML.load_file(
+        Rails.root.join('config', 'configurable.yml')
       )
+    )
   end
 
   def self.keys
@@ -63,6 +65,19 @@ class Configurable < ActiveRecord::Base
   end
 
   private
+
+  def type_of_value
+    case Configurable.defaults[name][:type]
+    when 'boolean'
+      [true, 1, "1", "true", false, 0, "0", "false"].include?(value)
+    when 'decimal'
+      Float(value) rescue errors.add(:value, I18n.t("activerecord.errors.messages.invalid"))
+    when 'integer'
+      Integer(value) rescue errors.add(:value, I18n.t("activerecord.errors.messages.invalid"))
+    when 'list'
+      value.is_a?(Array) rescue errors.add(:value, I18n.t("activerecord.errors.messages.invalid"))
+    end
+  end
 
   def invalidate_cache
     Rails.cache.delete("configurable_engine:#{self.name}")
