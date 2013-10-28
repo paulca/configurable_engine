@@ -1,6 +1,7 @@
 # Configurable #
 
-A Rails 3 configuration engine. An update to [Behavior](http://github.com/paulca/behavior) for Rails 3.
+A Rails 3 configuration engine. Forked from paulca configurable_engine (https://github.com/paulca/configurable_engine)
+This version uses Rails.cache to store the activerecord settings, in order to minimize database queries.
 
 ## How it works ##
 
@@ -12,7 +13,7 @@ If you or your app users need to change these variables, Configurable stores new
 
 Configurable is available as a Ruby gem. Simply add it to your Rails 3 app's `Gemfile`:
 
-    gem 'configurable_engine'
+    gem 'configurable_engine', git: "git://github.com/aspgems/configurable_engine.git"
 
 Then run the `configurable_engine:install` generator:
 
