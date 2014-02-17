@@ -1,7 +1,7 @@
 <h2>Config</h2>
 
 <%= form_tag(admin_configurable_path, :method => :put) do -%>
-  <%- Configurable.keys.each do |key| -%>
+  <%- @keys.each do |key| -%>
     <%- options = Configurable.defaults[key] -%>
     <div class="configurable">
       <%= label_tag key, options[:name] %>

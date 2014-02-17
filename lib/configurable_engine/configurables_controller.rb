@@ -1,7 +1,7 @@
 module ConfigurableEngine
   module ConfigurablesController
     def show
-
+      @keys = Configurable.keys
     end
 
     def update
@@ -10,7 +10,7 @@ module ConfigurableEngine
             Configurable.create {|c| c.name = key}
         configurable.update_attribute(:value,params[key])
       end
-      redirect_to admin_configurable_path
+      redirect_to admin_configurable_path, :notice => "Changes successfully updated"
     end
   end
 end
