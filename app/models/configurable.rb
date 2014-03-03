@@ -1,6 +1,6 @@
 class Configurable < ActiveRecord::Base
 
-  after_save :invalidate_cache
+  after_save :invalidate_cache, if: -> { ConfigurableEngine::Engine.config.use_cache }
 
   validates_presence_of    :name
   validates_uniqueness_of  :name
@@ -31,9 +31,13 @@ class Configurable < ActiveRecord::Base
   def self.[](key)
     return self.defaults[key][:default] unless table_exists?
 
-    value = Rails.cache.fetch("configurable_engine:#{key}") {
-      find_by_name(key).try(:value)
-    }
+    value = if ConfigurableEngine::Engine.config.use_cache
+        Rails.cache.fetch("configurable_engine:#{key}") {
+          find_by_name(key).try(:value)
+        }
+      else
+        find_by_name(key).try(:value)
+      end
 
     value ||= self.defaults[key][:default]
     case self.defaults[key][:type]
