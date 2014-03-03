@@ -1,4 +1,3 @@
-source 'https://rubygems.org'
+instance_eval File.read(File.expand_path('../gemfiles/Gemfile.base', __FILE__))
 
-# Specify your gem's dependencies in configurable_engine.gemspec
-gemspec
+gem 'rails', '~>3.2.0'

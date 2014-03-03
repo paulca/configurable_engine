@@ -67,6 +67,7 @@ class Configurable < ActiveRecord::Base
   private
 
   def type_of_value
+    return unless name
     case Configurable.defaults[name][:type]
     when 'boolean'
       [true, 1, "1", "true", false, 0, "0", "false"].include?(value)
