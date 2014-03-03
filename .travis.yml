@@ -1,0 +1,18 @@
+language: ruby
+rvm:
+  - 2.0.0
+  - 1.9.3
+  - jruby-19mode
+env:
+  - DB=sqlite
+  - DB=mysql
+  - DB=postgresql
+gemfile:
+  - Gemfile
+  - gemfiles/Gemfile.rails3_1
+  - gemfiles/Gemfile.rails4_0
+before_script:
+  - mysql -e 'create database strano_test'
+  - psql -c 'create database strano_test' -U postgres
+  - RAILS_ENV=test rake app:db:migrate
+  - rake app:db:test:prepare

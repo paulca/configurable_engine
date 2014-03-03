@@ -25,6 +25,5 @@ Gem::Specification.new do |spec|
   spec.rubygems_version = "2.0.3"
   spec.summary = "Database-backed configuration for Rails 3, with defaults from config file."
 
-  spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rake"
+  spec.add_dependency "rails", ">3.1.0"
 end
