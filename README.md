@@ -1,4 +1,4 @@
-# Configurable #
+# Configurable [![Build Status](https://travis-ci.org/paulca/configurable_engine.png?branch=master)](https://travis-ci.org/paulca/configurable_engine)
 
 A Rails 3 configuration engine. An update to [Behavior](http://github.com/paulca/behavior) for Rails 3.
 
