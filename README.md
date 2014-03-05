@@ -82,15 +82,13 @@ If you want to control how the fields in the admin interface appear, you can add
 
 ## Running the Tests ##
 
-The tests for this rails engine are in the `dummy` directory, which is a dummy Rails app with Configurable loaded in the Gemfile.
+The tests for this rails engine are in the `spec` and `features` directories.  They use the dummy rails app in `spec/dummy`
 
-Within the `dummy` folder, run:
+From the top level run:
 
-    rake db:schema:load
-    rake db:test:prepare
-    bundle exec rspec spec
-    bundle exec cucumber features
-
+    $ bundle exec rake app:db:schema:load app:db:test:prepare
+    $ bundle exec rake
+    
 ## Contributing ##
 
 All contributions are welcome. Just fork the code, ensure your changes include a test, ensure all the current tests pass and send a pull request.
