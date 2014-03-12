@@ -15,8 +15,8 @@ Gem::Specification.new do |spec|
     "LICENSE.txt",
     "README.md"
   ]
-  spec.files         = `git ls-files`.split($/)
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+
+  spec.files         = Dir["*.txt", "*.md", "lib/**/*", "app/**/*", "config/**/*"] - ['config/cucumber.yml'] 
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
 
   spec.homepage = "http://github.com/paulca/configurable_engine"
