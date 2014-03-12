@@ -1,3 +1,7 @@
+### v0.3.2 - Mar 12, 2014
+**features**
+re-releasing gem without test files included to shrink it.  Should have no code changes.
+
 ### v0.3.1 - Mar 3, 2014
 
 **features**
