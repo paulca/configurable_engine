@@ -17,7 +17,8 @@ Gem::Specification.new do |spec|
   ]
 
   spec.files         = Dir["*.txt", "*.md", "lib/**/*", "app/**/*", "config/**/*"] - ['config/cucumber.yml'] 
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  #re-enable test files when they're actually used.  In the mean time, lets leave them out to reduce our gem size.
+  #spec.test_files    = Dir['features/**/*', 'spec/**/*', 'gemfiles/**/*'] + %w{config/cucumber.yml .rspec tasks/cucumber.rake}
 
   spec.homepage = "http://github.com/paulca/configurable_engine"
   spec.licenses = ["MIT"]
