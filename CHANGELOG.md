@@ -1,3 +1,7 @@
+### v0.4.1 - May 21, 2014
+**bug fixes**
+if cacheing was enabled, configurable engine would never return default for unset values.
+
 ### v0.4.0 - May 21, 2014
 **features**
 Configurable.[]= will serialize arrays set to list-type params.
