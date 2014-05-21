@@ -31,16 +31,24 @@ class Configurable < ActiveRecord::Base
   def self.[](key)
     return self.defaults[key][:default] unless table_exists?
 
-    value = if ConfigurableEngine::Engine.config.use_cache
-        Rails.cache.fetch("configurable_engine:#{key}") {
-          find_by_name(key).try(:value)
-        }
-      else
+    if ConfigurableEngine::Engine.config.use_cache
+      Rails.cache.fetch("configurable_engine:#{key}") {
         find_by_name(key).try(:value)
-      end
+      }
+    elsif val = find_by_name(key).try(:value)
+      val
+    else
+      value ||= defaults[key][:default]
+      parse_value key, value
+    end
+  end
 
-    value ||= self.defaults[key][:default]
-    case self.defaults[key][:type]
+  def value
+    self.class.parse_value name, super
+  end
+
+  def self.parse_value key, value
+    case defaults[key][:type]
     when 'boolean'
       [true, 1, "1", "t", "true"].include?(value)
     when 'decimal'
