@@ -27,21 +27,23 @@ describe Configurable do
   describe ".[]=" do
     context "with no saved value" do
       it "creates a new entry" do
-        Configurable[:notify_email] = "john@example.com"
+        expect do
+          Configurable[:notify_email] = "john@example.com"
+        end.to change(Configurable, :count).from(0).to(1)
         Configurable.find_by_name('notify_email').value.should == 'john@example.com'
-        Configurable.count.should == 1
       end
     end
 
     context "with a saved value" do
       before do
-        Configurable.create!(:name => 'notify_email', :value => 'paul@rslw.com')
+        Configurable.create! {|c| c.name = 'notify_email'; c.value = 'paul@rslw.com' }
       end
 
       it "updates the existing value" do
-        Configurable[:notify_email] = "john@example.com"
+        expect do
+          Configurable[:notify_email] = "john@example.com"
+        end.to_not change Configurable, :count
         Configurable.find_by_name('notify_email').value.should == 'john@example.com'
-        Configurable.count.should == 1
       end
     end
   end
