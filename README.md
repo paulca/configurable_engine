@@ -27,13 +27,16 @@ For example, if you wanted to have access to a config variable "site_title", put
     site_title:
       name: Site Title
       default: My Site
-  
+      # type: String is the default
+
 Now, within your app, you can access `Configurable[:site_title]` (or `Configurable.site_title` if you prefer).
 
 Since Configurable is an ActiveRecord model, if you want to update the config, create a Configurable record in the database:
 
     Configurable.create!(:name => 'site_title', :value => 'My New Site')
     
+You can set the `type` attribute to `boolean`, `decimal`,`integer`, or `list` and it will treat those fields as those types.  Lists are comma and/or newline delimeted arrays of strings.
+
 ## Web Interface ##
 
 Configurable comes with a web interface that is available to your app straight away at `http://localhost:3000/admin/configurable`.
