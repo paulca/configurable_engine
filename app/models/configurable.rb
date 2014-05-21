@@ -24,7 +24,7 @@ class Configurable < ActiveRecord::Base
     if exisiting
       exisiting.update_attribute(:value, value)
     else
-      create(:name => key.to_s, :value => value)
+      create {|c| c.name = key.to_s; c.value = value}
     end
   end
 
