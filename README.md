@@ -12,11 +12,15 @@ If you or your app users need to change these variables, Configurable stores new
 
 Configurable is available as a Ruby gem. Simply add it to your Rails 3 app's `Gemfile`:
 
-    gem 'configurable_engine'
+```ruby
+gem 'configurable_engine'
+```
 
 Then run the `configurable_engine:install` generator:
 
-    rails generate configurable_engine:install
+```bash
+$ rails generate configurable_engine:install
+```
 
 ## Usage ##
 
@@ -24,17 +28,19 @@ There are two parts to how configurable_engine works. First of all there is a co
 
 For example, if you wanted to have access to a config variable "site_title", put this in configurable.yml:
 
-    site_title:
-      name: Site Title
-      default: My Site
-      # type: String is the default
-
+```yaml
+site_title:
+  name: Site Title
+  default: My Site
+  # type: String is the default
+```
 Now, within your app, you can access `Configurable[:site_title]` (or `Configurable.site_title` if you prefer).
 
 Since Configurable is an ActiveRecord model, if you want to update the config, create a Configurable record in the database:
 
-    Configurable.create!(:name => 'site_title', :value => 'My New Site')
-    
+```ruby
+Configurable.create!(:name => 'site_title', :value => 'My New Site')
+```    
 You can set the `type` attribute to `boolean`, `decimal`,`integer`, or `list` and it will treat those fields as those types.  Lists are comma and/or newline delimeted arrays of strings.
 
 ## Web Interface ##
@@ -43,52 +49,58 @@ Configurable comes with a web interface that is available to your app straight a
 
 If you want to add a layout, or protect the configurable controller, create `app/controllers/admin/configurables_controller.rb` as such:
 
-    bundle exec rails generate controller admin/configurables
+```bash
+$ bundle exec rails generate controller admin/configurables
+```
 
 and include `ConfigurableEngine::ConfigurablesController`, eg.
 
-    class Admin::ConfigurablesController < ApplicationController
-      # include the engine controller actions
-      include ConfigurableEngine::ConfigurablesController
+```ruby
+class Admin::ConfigurablesController < ApplicationController
+  # include the engine controller actions
+  include ConfigurableEngine::ConfigurablesController
     
-      # add your own filter(s) / layout
-      before_filter :protect_my_code
-      layout 'admin'
-    end
+  # add your own filter(s) / layout
+  before_filter :protect_my_code
+  layout 'admin'
+end
+```
 
 If you want to control how the fields in the admin interface appear, you can add additional params in your configurable.yml file:
 
-    site_title:
-      name: Name of Your Site   # sets the edit label
-      default: My Site          # sets the default value
-      type: string              # uses input type="text"
+```yaml
+site_title:
+  name: Name of Your Site   # sets the edit label
+  default: My Site          # sets the default value
+  type: string              # uses input type="text"
+site_description:
+  name: Describe Your Site  # sets the edit label
+  default: My Site          # sets the default value
+  type: text                # uses textarea
+secret:
+  name: A Secret Passphrase # sets the edit label
+  default: passpass         # sets the default value
+  type: password            # uses input type="password"
 
-    site_description:
-      name: Describe Your Site  # sets the edit label
-      default: My Site          # sets the default value
-      type: text                # uses textarea
+Value:
+  name: A number            # sets the edit label
+  default: 10               # sets the default value
+  type: integer             # coerces the value to an integer
 
-    secret:
-      name: A Secret Passphrase # sets the edit label
-      default: passpass         # sets the default value
-      type: password            # uses input type="password"
+Price:
+  name: A price             # sets the edit label
+  default: "10.00"          # sets the default value
+  type: decimal             # coerces the value to a decimal
+```
 
-    Value:
-      name: A number            # sets the edit label
-      default: 10               # sets the default value
-      type: integer             # coerces the value to an integer
-
-    Price:
-      name: A price             # sets the edit label
-      default: "10.00"          # sets the default value
-      type: decimal             # coerces the value to a decimal
-      
 ## Cacheing ##
 
 If you want to use rails caching of Configurable updates, simply set
 
-    config.use_cache = true
-    
+
+```ruby
+config.use_cache = true
+```    
 in your `config/application.rb` (or `config/production.rb`)
 
 ## Running the Tests ##
@@ -97,9 +109,11 @@ The tests for this rails engine are in the `spec` and `features` directories.  T
 
 From the top level run:
 
-    $ bundle exec rake app:db:schema:load app:db:test:prepare
-    $ bundle exec rake
-    
+```bash
+$ bundle exec rake app:db:schema:load app:db:test:prepare
+$ bundle exec rake
+```
+
 ## Contributing ##
 
 All contributions are welcome. Just fork the code, ensure your changes include a test, ensure all the current tests pass and send a pull request.
