@@ -30,18 +30,17 @@ class Configurable < ActiveRecord::Base
   end
 
   def self.[](key)
-    return defaults[key][:default] unless table_exists?
+    return parse_value key, defaults[key][:default] unless table_exists?
 
-    if ConfigurableEngine::Engine.config.use_cache
+    val = if ConfigurableEngine::Engine.config.use_cache
       Rails.cache.fetch("configurable_engine:#{key}") {
         find_by_name(key).try(:value)
       }
-    elsif val = find_by_name(key).try(:value)
-      val
     else
-      value ||= defaults[key][:default]
-      parse_value key, value
+      find_by_name(key).try(:value)
     end
+
+    val ||= parse_value key, defaults[key][:default]
   end
 
   def value
