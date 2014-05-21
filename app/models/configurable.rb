@@ -61,7 +61,7 @@ class Configurable < ActiveRecord::Base
       if value.is_a? Array
         value
       else
-        value.split("\n").collect { |v| v =~ ',' ? v.split(',') : v }
+        value.split("\n").collect { |v| v =~ /,/ ? v.split(',') : v }
       end
     else
       value
