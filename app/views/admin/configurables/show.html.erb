@@ -13,7 +13,7 @@
       <%- elsif options[:type] == 'text' -%>
         <%= text_area_tag key, Configurable.send(key) %>
       <%- elsif options[:type] == 'list' -%>
-        <%= text_area_tag key, Configurable.send(key).collect{ |a| a.join(",")}.join("\n") %>
+        <%= text_area_tag key, Configurable.serialized_value(key) %>
       <%- else -%>
         <%= text_field_tag key, Configurable.send(key) %>
       <%- end -%>

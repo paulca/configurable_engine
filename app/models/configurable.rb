@@ -68,6 +68,21 @@ class Configurable < ActiveRecord::Base
     end
   end
 
+  def self.serialized_value key
+    value_for_serialization key, self[key]
+  end
+
+  def self.value_for_serialization(key, value)
+    if defaults[key][:type] == 'list' && value.is_a?(Array)
+      if value.all? {|entry| entry.is_a? Array}
+        value = value.collect {|entry| entry.join ','}
+      end
+      value.join("\n")
+    else
+      value.to_s
+    end
+  end
+
   def self.method_missing(name, *args)
     name_stripped = name.to_s.sub(/[\?=]$/, '')
     if self.keys.include?(name_stripped)
@@ -101,15 +116,7 @@ class Configurable < ActiveRecord::Base
   end
 
   def serialize_value
-    case Configurable.defaults[name][:type]
-    when 'list'
-      if value.is_a? Array
-        if value.all? {|entry| entry.is_a? Array}
-          self.value = value.collect {|a| a.join(',')}
-        end
-        self.value = value.join("\n")
-      end
-    end
+    self.value = Configurable.value_for_serialization name, value
   end
 
   def invalidate_cache
