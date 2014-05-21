@@ -6,6 +6,7 @@ class Configurable < ActiveRecord::Base
   validates_uniqueness_of  :name
 
   validate :type_of_value
+  before_save :serialize_value
 
   def self.defaults
     @defaults ||= HashWithIndifferentAccess.new(
@@ -29,7 +30,7 @@ class Configurable < ActiveRecord::Base
   end
 
   def self.[](key)
-    return self.defaults[key][:default] unless table_exists?
+    return defaults[key][:default] unless table_exists?
 
     if ConfigurableEngine::Engine.config.use_cache
       Rails.cache.fetch("configurable_engine:#{key}") {
@@ -99,6 +100,11 @@ class Configurable < ActiveRecord::Base
     end
     errors.add(:value, I18n.t("activerecord.errors.messages.invalid")) unless valid
   end
+
+  def serialize_value
+    case Configurable.defaults[name][:type]
+    when 'list'
+      self.value = value.collect{ |a| a.join(",")}.join("\n") if value.is_a? Array
     end
   end
 
