@@ -14,5 +14,5 @@ gemfile:
 before_script:
   - mysql -e 'create database strano_test'
   - psql -c 'create database strano_test' -U postgres
-  - RAILS_ENV=test rake app:db:migrate
-  - rake app:db:test:prepare
+  - RAILS_ENV=test bundle exec rake app:db:migrate
+  - bundle exec rake app:db:test:prepare
