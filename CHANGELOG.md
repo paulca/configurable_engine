@@ -1,3 +1,8 @@
+### v0.4.0 - May 21, 2014
+**features**
+Configurable.[]= will serialize arrays set to list-type params.
+BREAKING CHANGE: Configurable#value and Configurable.[] should return similarly cast values (previously #value was always the string value)
+
 ### v0.3.3 - May 21, 2014
 **bug fixes**
 No longer uses mass assignment internally.
