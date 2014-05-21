@@ -1,6 +1,6 @@
 # Configurable [![Build Status](https://travis-ci.org/paulca/configurable_engine.png?branch=master)](https://travis-ci.org/paulca/configurable_engine)
 
-A Rails 3 configuration engine. An update to [Behavior](http://github.com/paulca/behavior) for Rails 3.
+A Rails 3/4 configuration engine. An update to [Behavior](http://github.com/paulca/behavior) for Rails 3 and 4.
 
 ## How it works ##
 
@@ -40,7 +40,7 @@ Since Configurable is an ActiveRecord model, if you want to update the config, c
 
 ```ruby
 Configurable.create!(:name => 'site_title', :value => 'My New Site')
-```    
+```
 You can set the `type` attribute to `boolean`, `decimal`,`integer`, or `list` and it will treat those fields as those types.  Lists are comma and/or newline delimeted arrays of strings.
 
 ## Web Interface ##
@@ -59,7 +59,7 @@ and include `ConfigurableEngine::ConfigurablesController`, eg.
 class Admin::ConfigurablesController < ApplicationController
   # include the engine controller actions
   include ConfigurableEngine::ConfigurablesController
-    
+
   # add your own filter(s) / layout
   before_filter :protect_my_code
   layout 'admin'
@@ -100,7 +100,7 @@ If you want to use rails caching of Configurable updates, simply set
 
 ```ruby
 config.use_cache = true
-```    
+```
 in your `config/application.rb` (or `config/production.rb`)
 
 ## Running the Tests ##
