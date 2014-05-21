@@ -74,6 +74,7 @@ class Configurable < ActiveRecord::Base
 
   def self.value_for_serialization(key, value)
     if defaults[key][:type] == 'list' && value.is_a?(Array)
+      value.gsub! "\r\n", "\n"
       if value.all? {|entry| entry.is_a? Array}
         value = value.collect {|entry| entry.join ','}
       end

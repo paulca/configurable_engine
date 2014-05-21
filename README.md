@@ -66,6 +66,13 @@ class Admin::ConfigurablesController < ApplicationController
 end
 ```
 
+To ensure text areas are rendered correctly, ensure that your layout preserves whitespace.  In haml, use the `~` operator
+
+```haml
+  %container
+    ~ yield
+```
+
 If you want to control how the fields in the admin interface appear, you can add additional params in your configurable.yml file:
 
 ```yaml
