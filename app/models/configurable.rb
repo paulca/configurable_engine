@@ -103,7 +103,12 @@ class Configurable < ActiveRecord::Base
   def serialize_value
     case Configurable.defaults[name][:type]
     when 'list'
-      self.value = value.collect{ |a| a.join(",")}.join("\n") if value.is_a? Array
+      if value.is_a? Array
+        if value.all? {|entry| entry.is_a? Array}
+          self.value = value.collect {|a| a.join(',')}
+        end
+        self.value = value.join("\n")
+      end
     end
   end
 

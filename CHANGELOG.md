@@ -1,3 +1,7 @@
+### v0.4.2 - May 21, 2014
+**bug fixes**
+list types can serialize comma delimeted nested and non-nested lists
+
 ### v0.4.1 - May 21, 2014
 **bug fixes**
 if cacheing was enabled, configurable engine would never return default for unset values.
