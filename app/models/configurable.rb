@@ -77,15 +77,20 @@ class Configurable < ActiveRecord::Base
 
   def type_of_value
     return unless name
-    case Configurable.defaults[name][:type]
+    valid = case Configurable.defaults[name][:type]
     when 'boolean'
       [true, 1, "1", "true", false, 0, "0", "false"].include?(value)
     when 'decimal'
-      Float(value) rescue errors.add(:value, I18n.t("activerecord.errors.messages.invalid"))
+      BigDecimal(value) rescue false
     when 'integer'
-      Integer(value) rescue errors.add(:value, I18n.t("activerecord.errors.messages.invalid"))
+      Integer(value) rescue false
     when 'list'
-      value.is_a?(Array) rescue errors.add(:value, I18n.t("activerecord.errors.messages.invalid"))
+      value.is_a?(Array)
+    else
+      true
+    end
+    errors.add(:value, I18n.t("activerecord.errors.messages.invalid")) unless valid
+  end
     end
   end
 
