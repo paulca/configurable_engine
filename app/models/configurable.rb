@@ -44,12 +44,17 @@ class Configurable < ActiveRecord::Base
     when 'boolean'
       [true, 1, "1", "t", "true"].include?(value)
     when 'decimal'
+      value ||= 0
       BigDecimal.new(value.to_s)
     when 'integer'
       value.to_i
     when 'list'
-      return value if value.is_a?(Array)
-      value.split("\n").collect{ |v| v.split(',') }
+      value ||= []
+      if value.is_a? Array
+        value
+      else
+        value.split("\n").collect { |v| v.split(',') }
+      end
     else
       value
     end
