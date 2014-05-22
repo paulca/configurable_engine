@@ -17,7 +17,8 @@ module ConfigurableEngine
       if failures.empty?
         redirect_to admin_configurable_path, :notice => "Changes successfully updated"
       else
-        redirect_to admin_configurable_path, :alert => failures.flat_map(&:errors).flat_map(&:full_messages).join(',')
+        flash[:error] = failures.flat_map(&:errors).flat_map(&:full_messages).join(',')
+        redirect_to admin_configurable_path
       end
     end
   end
