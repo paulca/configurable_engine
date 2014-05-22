@@ -10,7 +10,8 @@ module ConfigurableEngine
           configurable = Configurable.find_by_name(key) ||
               Configurable.create {|c| c.name = key}
         end.reject do |configurable|
-          configurable.update_attributes(value: params[configurable.name])
+          configurable.value = params[configurable.name]
+          configurable.save
         end
 
       if failures.empty?
