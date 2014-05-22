@@ -74,14 +74,13 @@ class Configurable < ActiveRecord::Base
 
   def self.value_for_serialization(key, value)
     if defaults[key][:type] == 'list' && value.is_a?(Array)
-      value.gsub! "\r\n", "\n"
       if value.all? {|entry| entry.is_a? Array}
         value = value.collect {|entry| entry.join ','}
       end
       value.join("\n")
     else
       value.to_s
-    end
+    end.gsub("\r\n","\n")
   end
 
   def self.method_missing(name, *args)
