@@ -1,6 +1,7 @@
-### v0.4.4beta - May 21, 2014
+### v0.4.4 - May 21, 2014
 **bug fixes**
-list types can actually deserialize comma delimeted nested and non-nested lists
+list types can *actually* deserialize comma delimeted nested and non-nested lists
+tested end-to-end but need better specs.  sorry about the mess.
 
 
 ### v0.4.3 - May 21, 2014
