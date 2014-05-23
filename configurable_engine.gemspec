@@ -7,9 +7,8 @@ Gem::Specification.new do |spec|
   spec.name = "configurable_engine"
   spec.version = ConfigurableEngine::VERSION
 
-  spec.authors = ["Paul Campbell"]
-  spec.date = "2013-09-29"
-  spec.description = "Configurable is a Rails 3 engine that allows you to set up config variables in a config file, specifying default values for all environmentspec. These variables can then be set on a per-app basis using a user facing configuration screen. "
+  spec.authors = ["Paul Campbell", 'Michael Glass']
+  spec.description = "Configurable is a Rails 3/4 engine that allows you to set up config variables in a config file, specifying default values for all environmentspec. These variables can then be set on a per-app basis using a user facing configuration screen. "
   spec.email = "paul@rslw.com"
   spec.extra_rdoc_files = [
     "LICENSE.txt",
