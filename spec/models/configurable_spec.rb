@@ -15,7 +15,8 @@ describe Configurable do
 
   describe ".keys" do
     it "should collect the keys" do
-      Configurable.keys.should == ['conversion_rate',
+      Configurable.keys.should == ['accept_applications',
+                                   'conversion_rate',
                                    'important_number',
                                    'log_out_sso',
                                    'long_list',
@@ -73,6 +74,17 @@ describe Configurable do
       it "should typecast the new value" do
         Configurable[:log_out_sso].should == true
         Configurable.log_out_sso?.should == true
+      end
+    end
+
+    context "with a default boolean of true and a configuration set to false" do
+      before do
+        Configurable.create!(:name => 'accept_applications', :value => false)
+      end
+
+      it "should typecast the new value" do
+        Configurable[:accept_applications].should == false
+        Configurable.accept_applications.should == false
       end
     end
 

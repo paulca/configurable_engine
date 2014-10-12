@@ -8,6 +8,11 @@ log_out_sso:
   type: boolean
   default: no
 
+accept_applications:
+  name: Accepting Application
+  type: boolean
+  default: true
+
 conversion_rate:
   name: Conversion Rate
   type: decimal
