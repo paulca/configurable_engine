@@ -117,7 +117,8 @@ The tests for this rails engine are in the `spec` and `features` directories.  T
 From the top level run:
 
 ```bash
-$ bundle exec rake app:db:schema:load app:db:test:prepare
+$ bundle exec rake app:db:schema:load
+$ bundle exec rake app:db:test:prepare
 $ bundle exec rake
 ```
 
