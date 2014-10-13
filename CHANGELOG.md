@@ -1,3 +1,7 @@
+### v0.4.5 - October 13, 2014
+**bug fixes**
+Configurable can store false values when the default is true (https://github.com/paulca/configurable_engine/pull/24, thanks @lilliealbert)
+
 ### v0.4.4 - May 21, 2014
 **bug fixes**
 list types can *actually* deserialize comma delimeted nested and non-nested lists
