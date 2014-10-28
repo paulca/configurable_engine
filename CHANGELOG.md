@@ -1,3 +1,7 @@
+### v0.4.6 - October 28, 2014
+**cleanup**
+When using Configurable with cache, destroying a configurable instance erases it from cache
+
 ### v0.4.5 - October 13, 2014
 **bug fixes**
 Configurable can store false values when the default is true (https://github.com/paulca/configurable_engine/pull/24, thanks @lilliealbert)
