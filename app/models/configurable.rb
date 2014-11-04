@@ -29,20 +29,40 @@ class Configurable < ActiveRecord::Base
     end
   end
 
+  def self.cache_key(key)
+    "configurable_engine:#{key}"
+  end
+
   def self.[](key)
     return parse_value key, defaults[key][:default] unless table_exists?
 
-    config = if ConfigurableEngine::Engine.config.use_cache
-      Rails.cache.fetch("configurable_engine:#{key}") {
-        find_by_name(key)
-      }
-    else
-      find_by_name(key)
+    value, found = [false, false]
+    database_finder = -> do
+      config = find_by_name(key)
+      found = !!config
+      value = config.try(:value)
     end
 
-    return parse_value key, defaults[key][:default] unless config
 
-    config.value
+    if ConfigurableEngine::Engine.config.use_cache
+      found = Rails.cache.exist?(cache_key(key))
+      if found
+        value = Rails.cache.fetch(cache_key(key))
+      else
+        database_finder.call
+        if found
+          Rails.cache.store cache_key(key), value
+        end
+      end
+    else
+      database_finder.call
+    end
+
+    if found
+      value
+    else
+      parse_value key, defaults[key][:default]
+    end
   end
 
   def value
@@ -122,6 +142,6 @@ class Configurable < ActiveRecord::Base
   end
 
   def invalidate_cache
-    Rails.cache.delete("configurable_engine:#{self.name}")
+    Rails.cache.delete(Configurable.cache_key self.name)
   end
 end
