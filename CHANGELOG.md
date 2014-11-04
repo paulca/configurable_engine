@@ -1,3 +1,7 @@
+### v0.4.7 - November 4, 2014
+**bug fix**
+Configurable broke for users using cacheing.
+
 ### v0.4.6 - October 28, 2014
 **cleanup**
 When using Configurable with cache, destroying a configurable instance erases it from cache
