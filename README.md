@@ -100,6 +100,17 @@ Price:
   type: decimal             # coerces the value to a decimal
 ```
 
+## Configuration ##
+
+```ruby
+ConfigurableEngine.configure do |config|
+  # have Configurable Engine add routes automatically
+  # config.generate_routes = true
+end
+```
+
+If you need to turn off route generation edit the configuration file at `config/initializers/configurable_engine.rb` in your project, and set `config.generate_routes = false`
+
 ## Cacheing ##
 
 If you want to use rails caching of Configurable updates, simply set

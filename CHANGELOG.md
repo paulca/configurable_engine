@@ -1,3 +1,7 @@
+### HEAD
+**new features**
+Route generation can be turned off if there is a need to customise them (https://github.com/paulca/configurable_engine/pull/x, thanks @smithev)
+
 ### v0.4.7 - November 4, 2014
 **bug fix**
 Configurable broke for users using cacheing.
