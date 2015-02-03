@@ -1,6 +1,6 @@
 class Configurable < ActiveRecord::Base
-  after_save    :invalidate_cache, if: -> { ConfigurableEngine::Engine.config.use_cache }
-  after_destroy :invalidate_cache, if: -> { ConfigurableEngine::Engine.config.use_cache }
+  after_save    :invalidate_cache, if: -> { ConfigurableEngine.use_cache }
+  after_destroy :invalidate_cache, if: -> { ConfigurableEngine.use_cache }
 
   validates_presence_of    :name
   validates_uniqueness_of  :name
@@ -44,7 +44,7 @@ class Configurable < ActiveRecord::Base
     end
 
 
-    if ConfigurableEngine::Engine.config.use_cache
+    if ConfigurableEngine.use_cache
       found = Rails.cache.exist?(cache_key(key))
       if found
         value = Rails.cache.fetch(cache_key(key))

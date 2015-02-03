@@ -1,4 +1,7 @@
 ConfigurableEngine.configure do |config|
+  # cache config values?
+  # config.use_cache = false
+
   # have Configurable Engine add routes automatically
   # config.generate_routes = true
 

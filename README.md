@@ -28,6 +28,9 @@ The install generator creates an initializer at `config/initializers/configurabl
 
 ```ruby
 ConfigurableEngine.configure do |config|
+  # cache config values?
+  # config.use_cache = false
+
   # have Configurable Engine add routes automatically
   # config.generate_routes = true
 
@@ -39,6 +42,8 @@ end
 To stop routes from being generated set `config.generate_routes = false`
 
 If you turn off route generation, set the route you want Configurable Engine to use internally instead with `config.custom_route = -> { Rails.application.routes.url_helpers.YOUR_ROUTE_HERE }`
+
+If you want to use Rails caching of Configurable updates, simply set `config.use_cache = true`
 
 ## Usage ##
 
@@ -117,16 +122,6 @@ Price:
   default: "10.00"          # sets the default value
   type: decimal             # coerces the value to a decimal
 ```
-
-## Cacheing ##
-
-If you want to use rails caching of Configurable updates, simply set
-
-
-```ruby
-config.use_cache = true
-```
-in your `config/application.rb` (or `config/production.rb`)
 
 ## Running the Tests ##
 
