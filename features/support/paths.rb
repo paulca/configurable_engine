@@ -11,7 +11,7 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
     when /the config admin page/
-      admin_configurable_path
+      ConfigurableEngine.custom_route
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

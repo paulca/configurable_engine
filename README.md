@@ -22,6 +22,24 @@ Then run the `configurable_engine:install` generator:
 $ rails generate configurable_engine:install
 ```
 
+## Configuration ##
+
+The install generator creates an initializer at `config/initializers/configurable_engine.rb`.
+
+```ruby
+ConfigurableEngine.configure do |config|
+  # have Configurable Engine add routes automatically
+  # config.generate_routes = true
+
+  # override default routing
+  # config.custom_route = -> { Rails.application.routes.url_helpers.admin_configurable_path }
+end
+```
+
+To stop routes from being generated set `config.generate_routes = false`
+
+If you turn off route generation, set the route you want Configurable Engine to use internally instead with `config.custom_route = -> { Rails.application.routes.url_helpers.YOUR_ROUTE_HERE }`
+
 ## Usage ##
 
 There are two parts to how configurable_engine works. First of all there is a config file, config/configurable.yml. This file controls the variables that are allowed to be set in the app.
@@ -99,17 +117,6 @@ Price:
   default: "10.00"          # sets the default value
   type: decimal             # coerces the value to a decimal
 ```
-
-## Configuration ##
-
-```ruby
-ConfigurableEngine.configure do |config|
-  # have Configurable Engine add routes automatically
-  # config.generate_routes = true
-end
-```
-
-If you need to turn off route generation edit the configuration file at `config/initializers/configurable_engine.rb` in your project, and set `config.generate_routes = false`
 
 ## Cacheing ##
 

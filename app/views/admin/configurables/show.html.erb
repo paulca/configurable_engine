@@ -1,6 +1,6 @@
 <h2>Config</h2>
 
-<%= form_tag(admin_configurable_path, :method => :put) do -%>
+<%= form_tag(ConfigurableEngine.custom_route, :method => :put) do -%>
   <%- @keys.each do |key| -%>
     <%- options = Configurable.defaults[key] -%>
     <div class="configurable">
@@ -19,6 +19,6 @@
       <%- end -%>
     </div>
   <%- end -%>
-  
+
   <%= submit_tag 'Save' %>
 <%- end -%>

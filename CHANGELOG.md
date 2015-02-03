@@ -1,6 +1,7 @@
 ### HEAD
 **new features**
-Route generation can be turned off if there is a need to customise them (https://github.com/paulca/configurable_engine/pull/25, thanks @smithev)
+* Route generation can be turned off if there is a need to customise them (https://github.com/paulca/configurable_engine/pull/25, @smithev).
+* Internal routes can be overriden if the above option is used (https://github.com/paulca/configurable_engine/pull/25, @smithev).
 
 ### v0.4.7 - November 4, 2014
 **bug fix**
