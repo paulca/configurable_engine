@@ -14,7 +14,7 @@ module ConfigurableEngine
     self.custom_route    = -> { admin_configurable_path }
   end
 
-  def self.active_record_protected_attributes?
+  def self.protected_attributes?
     @active_record_protected_attributes ||= ::ActiveRecord::VERSION::MAJOR < 4 || !!defined?(ProtectedAttributes)
   end
 

@@ -1,5 +1,5 @@
 class Configurable < ActiveRecord::Base
-  attr_accessible :name, :value if ConfigurableEngine.active_record_protected_attributes?
+  attr_accessible :name, :value if ConfigurableEngine.protected_attributes?
 
   after_save    :invalidate_cache, if: -> { ConfigurableEngine.use_cache }
   after_destroy :invalidate_cache, if: -> { ConfigurableEngine.use_cache }
