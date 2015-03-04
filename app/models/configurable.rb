@@ -51,7 +51,7 @@ class Configurable < ActiveRecord::Base
       else
         database_finder.call
         if found
-          Rails.cache.store cache_key(key), value
+          Rails.cache.write cache_key(key), value
         end
       end
     else
