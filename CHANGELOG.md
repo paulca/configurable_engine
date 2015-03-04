@@ -1,3 +1,7 @@
+### v0.4.8 - March 4, 2015
+**bug fix**
+Cacheing was just totally broken.  Whoops! (thanks, @antoshalee)
+
 ### v0.4.7 - November 4, 2014
 **bug fix**
 Configurable broke for users using cacheing.
