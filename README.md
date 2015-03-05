@@ -104,6 +104,38 @@ Price:
 
 If you want to use rails caching of Configurable updates, simply set
 
+## Translating the interface ##
+
+### Labels ###
+
+If you want labels in your admin interface to be translated, just set a `i18n_key` option for your configuration:
+
+```
+Price:
+  name: A price                # sets the edit label
+  default: "10.00"             # sets the default value
+  type: decimal                # coerces the value to a decimal
+  i18n_key: configurable.price # this will call I18n.t('configurable.price') to display the label
+```
+
+In this case the `name` label won't be used in the admin interface.
+
+### Title ###
+
+You can translate the title of the page by setting a translation for the key `configurable.admin_title`:
+
+```
+# example config/locales/en.yml
+...
+configurable:
+  admin_title: My cool app configuration
+...
+```
+
+### Submit button ###
+
+Same as title, but the key is `configurable.submit_button`.
+
 
 ```ruby
 config.use_cache = true
