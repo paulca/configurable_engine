@@ -104,6 +104,12 @@ Price:
 
 If you want to use rails caching of Configurable updates, simply set
 
+```ruby
+config.use_cache = true
+```
+
+in your `config/application.rb` (or `config/production.rb`)
+
 ## Translating the interface ##
 
 ### Labels ###
@@ -137,10 +143,40 @@ configurable:
 Same as title, but the key is `configurable.submit_button`.
 
 
-```ruby
-config.use_cache = true
+## Styling the interface ##
+
+To style the web interface you are advised to use Sass. Here's an example scss file that will make the interface bootstrap-3 ready:
+
 ```
-in your `config/application.rb` (or `config/production.rb`)
+@import 'bootstrap';
+
+.configurable-container {
+  @extend .col-md-6;
+
+  .configurable-options {
+    form {
+      @extend .form-horizontal;
+
+      .configurable {
+        @extend .col-md-12;
+        @extend .form-group;
+
+        textarea, input[type=text], input[type=password] {
+          @extend .form-control;
+        }
+      }
+
+      input[type=submit] {
+        @extend .btn;
+        @extend .btn-primary;
+      }
+    }
+  }
+}
+
+```
+
+Just save this into your rails assets and you're ready to go.
 
 ## Running the Tests ##
 
