@@ -17,6 +17,7 @@ describe Configurable do
     it "should collect the keys" do
       Configurable.keys.should == ['accept_applications',
                                    'conversion_rate',
+                                   'important_date',
                                    'important_number',
                                    'log_out_sso',
                                    'long_list',
@@ -105,6 +106,16 @@ describe Configurable do
 
       it "should typecast the value" do
         Configurable.important_number.should == 100
+      end
+    end
+
+    context "with a date value" do
+      before do
+        Configurable.create!(:name => 'important_date', :value => '2016-11-23')
+      end
+
+      it "should typecast the value" do
+        Configurable.important_date.should == Date.parse('2016-11-23')
       end
     end
 
