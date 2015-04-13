@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
     "README.md"
   ]
 
-  spec.files         = Dir["*.txt", "*.md", "lib/**/*", "app/**/*", "config/**/*"] - ['config/cucumber.yml'] 
+  spec.files         = Dir["*.txt", "*.md", "lib/**/*", "app/**/*", "config/**/*"] - ['config/cucumber.yml']
   #re-enable test files when they're actually used.  In the mean time, lets leave them out to reduce our gem size.
   #spec.test_files    = Dir['features/**/*', 'spec/**/*', 'gemfiles/**/*'] + %w{config/cucumber.yml .rspec tasks/cucumber.rake}
 
@@ -25,5 +25,5 @@ Gem::Specification.new do |spec|
   spec.rubygems_version = "2.0.3"
   spec.summary = "Database-backed configuration for Rails 3, with defaults from config file."
 
-  spec.add_dependency "rails", ">3.1.0"
+  spec.add_dependency 'rails', '>= 3.1.0', '< 5.0'
 end
