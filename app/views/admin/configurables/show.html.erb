@@ -1,24 +1,31 @@
-<h2>Config</h2>
+<div class='configurable-container'>
 
-<%= form_tag(admin_configurable_path, :method => :put) do -%>
-  <%- @keys.each do |key| -%>
-    <%- options = Configurable.defaults[key] -%>
-    <div class="configurable">
-      <%= label_tag key, options[:name] %>
-      <%- if options[:type] == 'boolean' %>
-        <%= hidden_field_tag key, "0" %>
-        <%= check_box_tag key, "1", Configurable.send(key) %>
-      <%- elsif options[:type] == 'password' -%>
-        <%= password_field_tag key, Configurable.send(key) %>
-      <%- elsif options[:type] == 'text' -%>
-        <%= text_area_tag key, Configurable.send(key) %>
-      <%- elsif options[:type] == 'list' -%>
-        <%= text_area_tag key, Configurable.serialized_value(key) -%>
-      <%- else -%>
-        <%= text_field_tag key, Configurable.send(key) %>
+  <div class="header">
+    <h2>Config</h2>
+  </div>
+
+  <div class="configurable-options">
+    <%= form_tag(admin_configurable_path, :method => :put) do -%>
+      <%- @keys.each do |key| -%>
+        <%- options = Configurable.defaults[key] -%>
+        <div class="configurable">
+          <%= label_tag key, options[:name] %>
+          <%- if options[:type] == 'boolean' %>
+            <%= hidden_field_tag key, "0" %>
+            <%= check_box_tag key, "1", Configurable.send(key) %>
+          <%- elsif options[:type] == 'password' -%>
+            <%= password_field_tag key, Configurable.send(key) %>
+          <%- elsif options[:type] == 'text' -%>
+            <%= text_area_tag key, Configurable.send(key) %>
+          <%- elsif options[:type] == 'list' -%>
+            <%= text_area_tag key, Configurable.serialized_value(key) -%>
+          <%- else -%>
+            <%= text_field_tag key, Configurable.send(key) %>
+          <%- end -%>
+        </div>
       <%- end -%>
-    </div>
-  <%- end -%>
-  
-  <%= submit_tag 'Save' %>
-<%- end -%>
+
+      <%= submit_tag 'Save' %>
+    <%- end -%>
+  </div>
+</div>
