@@ -30,3 +30,8 @@ long_list:
     - [ One, 1 ]
     - [ Two, 2 ]
     - [ Three, 3 ]
+
+important_date:
+  name: Important Date
+  type: date
+  default: '2015-05-14'

@@ -5,6 +5,10 @@
 * Moved the `use_cache` option into the new initializer file (https://github.com/paulca/configurable_engine/pull/25, @smithev).
 * Added strong parameters support for Rails > 4.0 and `attr_accessible` support for Rails < 4.0 (https://github.com/paulca/configurable_engine/pull/25, @smithev)
 
+### v0.4.8 - March 4, 2015
+**bug fix**
+Cacheing was just totally broken.  Whoops! (thanks, @antoshalee)
+
 ### v0.4.7 - November 4, 2014
 **bug fix**
 Configurable broke for users using cacheing.

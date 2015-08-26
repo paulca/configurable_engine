@@ -53,7 +53,7 @@ class Configurable < ActiveRecord::Base
       else
         database_finder.call
         if found
-          Rails.cache.store cache_key(key), value
+          Rails.cache.write cache_key(key), value
         end
       end
     else
@@ -87,6 +87,8 @@ class Configurable < ActiveRecord::Base
       else
         value.split("\n").collect { |v| v =~ /,/ ? v.split(',') : v }
       end
+    when 'date'
+      Date.parse(value) if value.present?
     else
       value
     end
@@ -133,6 +135,8 @@ class Configurable < ActiveRecord::Base
       Integer(value) rescue false
     when 'list'
       value.is_a?(Array)
+    when 'date'
+      value.is_a?(Date)
     else
       true
     end

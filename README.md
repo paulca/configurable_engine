@@ -123,6 +123,40 @@ Price:
   type: decimal             # coerces the value to a decimal
 ```
 
+## Styling the interface ##
+
+To style the web interface you are advised to use Sass. Here's an example scss file that will make the interface bootstrap-3 ready:
+
+```
+@import 'bootstrap';
+
+.configurable-container {
+  @extend .col-md-6;
+
+  .configurable-options {
+    form {
+      @extend .form-horizontal;
+
+      .configurable {
+        @extend .col-md-12;
+        @extend .form-group;
+
+        textarea, input[type=text], input[type=password] {
+          @extend .form-control;
+        }
+      }
+
+      input[type=submit] {
+        @extend .btn;
+        @extend .btn-primary;
+      }
+    }
+  }
+}
+```
+
+Just save this into your rails assets and you're ready to go.
+
 ## Running the Tests ##
 
 The tests for this rails engine are in the `spec` and `features` directories.  They use the dummy rails app in `spec/dummy`
