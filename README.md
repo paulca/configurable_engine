@@ -10,7 +10,7 @@ If you or your app users need to change these variables, Configurable stores new
 
 ## Installation ##
 
-Configurable is available as a Ruby gem. Simply add it to your Rails 3 app's `Gemfile`:
+Configurable is available as a Ruby gem. Simply add it to your Rails 3/4 app's `Gemfile`:
 
 ```ruby
 gem 'configurable_engine'
@@ -24,9 +24,9 @@ $ rails generate configurable_engine:install
 
 ## Usage ##
 
-There are two parts to how configurable_engine works. First of all there is a config file, config/configurable.yml. This file controls the variables that are allowed to be set in the app.
+There are two parts to how configurable_engine works. First of all there is a config file, `config/configurable.yml`. This file controls the variables that are allowed to be set in the app.
 
-For example, if you wanted to have access to a config variable "site_title", put this in configurable.yml:
+For example, if you wanted to have access to a config variable `site_title`, put this in `configurable.yml`:
 
 ```yaml
 site_title:
@@ -100,7 +100,7 @@ Price:
   type: decimal             # coerces the value to a decimal
 ```
 
-## Cacheing ##
+## Caching ##
 
 If you want to use rails caching of Configurable updates, simply set
 
