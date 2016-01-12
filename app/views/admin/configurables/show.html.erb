@@ -18,7 +18,7 @@
           <%- elsif options[:type] == 'text' -%>
             <%= text_area_tag key, Configurable.send(key) %>
           <%- elsif options[:type] == 'list' -%>
-            <%= select_tag key, options_for_select(Configurable.send(key)) -%>
+            <%= select_tag key, options_for_select(options[:default], Configurable.send(key)) -%>
           <%- else -%>
             <%= text_field_tag key, Configurable.send(key) %>
           <%- end -%>
