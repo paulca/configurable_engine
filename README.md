@@ -128,7 +128,7 @@ To style the web interface you are advised to use Sass. Here's an example scss f
         @extend .col-md-12;
         @extend .form-group;
 
-        textarea, input[type=text], input[type=password] {
+        textarea, select, input[type=text], input[type=password] {
           @extend .form-control;
         }
       }
