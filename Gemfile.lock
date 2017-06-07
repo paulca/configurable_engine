@@ -76,8 +76,8 @@ GEM
     journey (1.0.4)
     jruby-openssl (0.9.4)
       bouncy-castle-java (>= 1.5.0147)
-    json (1.8.1)
-    json (1.8.1-java)
+    json (1.8.6)
+    json (1.8.6-java)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -176,3 +176,6 @@ DEPENDENCIES
   rake
   rspec-rails
   sqlite3
+
+BUNDLED WITH
+   1.14.6
