@@ -88,7 +88,11 @@ class Configurable < ActiveRecord::Base
         value.split("\n").collect { |v| v =~ /,/ ? v.split(',') : v }
       end
     when 'date'
-      Date.parse(value) if value.present?
+      if value.is_a? Date
+        value
+      else
+       Date.parse(value) if value.present?
+      end
     else
       value
     end

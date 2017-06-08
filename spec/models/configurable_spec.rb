@@ -56,6 +56,14 @@ describe Configurable do
         expect(Configurable.long_list).to eq new_list
       end
     end
+
+    context "with a date value" do
+      it "should update the existing value" do
+        new_date = Date.today
+        Configurable[:important_date] = new_date
+        expect(Configurable.important_date).to eq new_date
+      end
+    end
   end
 
   describe ".[]" do
