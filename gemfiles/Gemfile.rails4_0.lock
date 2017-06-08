@@ -62,7 +62,6 @@ GEM
     database_cleaner (1.2.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
-    ffi (1.9.3)
     ffi (1.9.3-java)
     gherkin (2.12.2)
       multi_json (~> 1.3)
