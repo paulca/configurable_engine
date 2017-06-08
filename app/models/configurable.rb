@@ -1,4 +1,6 @@
 class Configurable < ActiveRecord::Base
+  serialize :value
+
   after_save    :invalidate_cache, if: -> { ConfigurableEngine::Engine.config.use_cache }
   after_destroy :invalidate_cache, if: -> { ConfigurableEngine::Engine.config.use_cache }
 

@@ -48,6 +48,14 @@ describe Configurable do
         Configurable.find_by_name('notify_email').value.should == 'john@example.com'
       end
     end
+
+    context "with a list value" do
+      it "should update the existing value" do
+        new_list = [["Four", "4"], ["Five", "5"], ["Six", "6"]]
+        Configurable[:long_list] = new_list
+        expect(Configurable.long_list).to eq new_list
+      end
+    end
   end
 
   describe ".[]" do
