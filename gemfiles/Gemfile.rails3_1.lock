@@ -88,7 +88,7 @@ GEM
     mini_portile (0.5.2)
     multi_json (1.8.4)
     multi_test (0.0.3)
-    mysql2 (0.3.15)
+    mysql2 (0.4.6)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     nokogiri (1.6.1-java)
