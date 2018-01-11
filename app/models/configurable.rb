@@ -61,7 +61,11 @@ class Configurable < ActiveRecord::Base
     if found
       value
     else
-      parse_value key, defaults[key][:default]
+      parse_value(key, defaults[key][:default]).tap do |val|
+        if ConfigurableEngine::Engine.config.use_cache
+          Rails.cache.write cache_key(key), val
+        end
+      end
     end
   end
 
