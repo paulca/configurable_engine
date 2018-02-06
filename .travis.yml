@@ -1,8 +1,7 @@
 language: ruby
 rvm:
-  - 2.0.0
-  - 1.9.3
-  - jruby-19mode
+  - 2.3.6
+  - 2.4.3
 env:
   - DB=sqlite
   - DB=mysql
@@ -10,6 +9,7 @@ env:
 gemfile:
   - Gemfile
   - gemfiles/Gemfile.rails3_1
+  - gemfiles/Gemfile.rails3_2
   - gemfiles/Gemfile.rails4_0
 before_script:
   - mysql -e 'create database strano_test'

@@ -9,13 +9,6 @@ platforms :mri do
   gem 'pg'
 end
 
-platforms :jruby do
-  gem 'activerecord-jdbcsqlite3-adapter'
-  gem 'activerecord-jdbcmysql-adapter'
-  gem 'activerecord-jdbcpostgresql-adapter'
-  gem 'jruby-openssl'
-end 
-
 group :test do
   gem 'capybara'
   gem 'cucumber-rails', require: false
