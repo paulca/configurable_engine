@@ -1,6 +1,6 @@
 # Configurable [![Build Status](https://travis-ci.org/paulca/configurable_engine.png?branch=master)](https://travis-ci.org/paulca/configurable_engine)
 
-A Rails 3/4 configuration engine. An update to [Behavior](http://github.com/paulca/behavior) for Rails 3 and 4.
+A Rails 4 configuration engine. An update to [Behavior](http://github.com/paulca/behavior) for Rails 4.
 
 ## How it works ##
 
@@ -10,7 +10,7 @@ If you or your app users need to change these variables, Configurable stores new
 
 ## Installation ##
 
-Configurable is available as a Ruby gem. Simply add it to your Rails 3/4 app's `Gemfile`:
+Configurable is available as a Ruby gem. Simply add it to your Rails 4 app's `Gemfile`:
 
 ```ruby
 gem 'configurable_engine'
@@ -164,4 +164,3 @@ All contributions are welcome. Just fork the code, ensure your changes include a
 
 Copyright (c) 2011 Paul Campbell. See LICENSE.txt for
 further details.
-

@@ -1,3 +1,11 @@
+### v0.5.0 - August 3, 2018
+**features**
+Official rails 4.2 support (Thanks @ento)
+
+**breaking changes**
+No further support for rails < 4.2, and non-mri rubies. Happy to accept those back as PRs!
+
+
 ### v0.4.8 - March 4, 2015
 **bug fix**
 Cacheing was just totally broken.  Whoops! (thanks, @antoshalee)
