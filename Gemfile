@@ -3,18 +3,9 @@ source 'https://rubygems.org'
 gem 'pry'
 gem 'rake'
 
-platforms :mri do
-  gem 'sqlite3'
-  gem 'mysql2'
-  gem 'pg'
-end
-
-platforms :jruby do
-  gem 'activerecord-jdbcsqlite3-adapter'
-  gem 'activerecord-jdbcmysql-adapter'
-  gem 'activerecord-jdbcpostgresql-adapter'
-  gem 'jruby-openssl'
-end
+gem 'sqlite3'
+gem 'mysql2'
+gem 'pg'
 
 group :test do
   gem 'capybara'
