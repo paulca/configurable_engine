@@ -4,8 +4,8 @@ describe 'dummy app database configuration' do
     dev_db = configs['development']['database']
     test_db = configs['test']['database']
 
-    dev_db.should =~ /development/
-    test_db.should =~ /test/
-    dev_db.should_not == test_db
+    expect(dev_db).to match(/development/)
+    expect(test_db).to match(/test/)
+    expect(dev_db).to_not eq test_db
   end
 end
