@@ -1,2 +1,0 @@
-instance_eval File.read(File.expand_path('../Gemfile.base', __FILE__))
-gem 'rails', '~>4.0.0'

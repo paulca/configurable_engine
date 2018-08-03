@@ -4,18 +4,18 @@ describe Configurable do
 
   describe ".create" do
     it "should require a key" do
-      Configurable.create(:name => nil).should have(1).error_on(:name)
+      expect(Configurable.create(:name => nil)).to have(1).error_on(:name)
     end
 
     it "should require a unique key" do
       Configurable.create!(:name => 'notify_email')
-      Configurable.create(:name => 'notify_email').should have(1).error_on(:name)
+      expect(Configurable.create(:name => 'notify_email')).to have(1).error_on(:name)
     end
   end
 
   describe ".keys" do
     it "should collect the keys" do
-      Configurable.keys.should == ['accept_applications',
+      expect(Configurable.keys).to eq ['accept_applications',
                                    'conversion_rate',
                                    'important_date',
                                    'important_number',
@@ -32,7 +32,7 @@ describe Configurable do
         expect do
           Configurable[:notify_email] = "john@example.com"
         end.to change(Configurable, :count).from(0).to(1)
-        Configurable.find_by_name('notify_email').value.should == 'john@example.com'
+        expect(Configurable.find_by_name('notify_email').value).to eq 'john@example.com'
       end
     end
 
@@ -45,7 +45,23 @@ describe Configurable do
         expect do
           Configurable[:notify_email] = "john@example.com"
         end.to_not change Configurable, :count
-        Configurable.find_by_name('notify_email').value.should == 'john@example.com'
+        expect(Configurable.find_by_name('notify_email').value).to eq 'john@example.com'
+      end
+    end
+
+    context "with a list value" do
+      it "should update the existing value" do
+        new_list = [["Four", "4"], ["Five", "5"], ["Six", "6"]]
+        Configurable[:long_list] = new_list
+        expect(Configurable.long_list).to eq new_list
+      end
+    end
+
+    context "with a date value" do
+      it "should update the existing value" do
+        new_date = Date.today
+        Configurable[:important_date] = new_date
+        expect(Configurable.important_date).to eq new_date
       end
     end
   end
@@ -53,7 +69,7 @@ describe Configurable do
   describe ".[]" do
     context "with no saved value" do
       it "shoud pick up the default value" do
-        Configurable[:notify_email].should == 'mreider@engineyard.com'
+        expect(Configurable[:notify_email]).to eq 'mreider@engineyard.com'
       end
     end
 
@@ -63,7 +79,7 @@ describe Configurable do
       end
 
       it "should find the new value" do
-        Configurable[:notify_email].should == 'paul@rslw.com'
+        expect(Configurable[:notify_email]).to eq 'paul@rslw.com'
       end
     end
 
@@ -73,8 +89,8 @@ describe Configurable do
       end
 
       it "should typecast the new value" do
-        Configurable[:log_out_sso].should == true
-        Configurable.log_out_sso?.should == true
+        expect(Configurable[:log_out_sso]).to eq true
+        expect(Configurable.log_out_sso?).to eq true
       end
     end
 
@@ -84,8 +100,8 @@ describe Configurable do
       end
 
       it "should typecast the new value" do
-        Configurable[:accept_applications].should == false
-        Configurable.accept_applications.should == false
+        expect(Configurable[:accept_applications]).to eq false
+        expect(Configurable.accept_applications).to eq false
       end
     end
 
@@ -95,7 +111,7 @@ describe Configurable do
       end
 
       it "should typecast the value" do
-        Configurable.conversion_rate.should == BigDecimal.new('1.2')
+        expect(Configurable.conversion_rate).to eq BigDecimal.new('1.2')
       end
     end
 
@@ -105,7 +121,7 @@ describe Configurable do
       end
 
       it "should typecast the value" do
-        Configurable.important_number.should == 100
+        expect(Configurable.important_number).to eq 100
       end
     end
 
@@ -115,14 +131,14 @@ describe Configurable do
       end
 
       it "should typecast the value" do
-        Configurable.important_date.should == Date.parse('2016-11-23')
+        expect(Configurable.important_date).to eq Date.parse('2016-11-23')
       end
     end
 
     context "with a list value" do
       context "default" do
         it "should default to a list" do
-          Configurable.long_list.should == [["One", 1], ["Two", 2], ["Three", 3]]
+          expect(Configurable.long_list).to eq [["One", 1], ["Two", 2], ["Three", 3]]
         end
       end
 
@@ -133,7 +149,7 @@ describe Configurable do
         end
 
         it "should update the list" do
-          Configurable.long_list.should == [["Paul", "7"],
+          expect(Configurable.long_list).to eq [["Paul", "7"],
                                             ["Ciara", "8"],
                                             ["Brian", "9"]]
         end
@@ -143,16 +159,16 @@ describe Configurable do
 
   describe ".method_missing" do
     it "should raise an error if a key doesn't exist" do
-      lambda { Configurable.nonsense }.should raise_error(NoMethodError)
+      expect { Configurable.nonsense }.to raise_error(NoMethodError)
     end
 
     it "should return the correct value" do
-      Configurable.notify_email.should == 'mreider@engineyard.com'
+      expect(Configurable.notify_email).to eq 'mreider@engineyard.com'
     end
 
     it "should assign the correct value" do
       Configurable.notify_email = 'john@example.com'
-      Configurable.notify_email.should == 'john@example.com'
+      expect(Configurable.notify_email).to eq 'john@example.com'
     end
   end
 

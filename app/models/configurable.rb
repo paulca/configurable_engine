@@ -1,4 +1,6 @@
 class Configurable < ActiveRecord::Base
+  serialize :value
+
   after_save    :invalidate_cache, if: -> { ConfigurableEngine::Engine.config.use_cache }
   after_destroy :invalidate_cache, if: -> { ConfigurableEngine::Engine.config.use_cache }
 
@@ -90,7 +92,11 @@ class Configurable < ActiveRecord::Base
         value.split("\n").collect { |v| v =~ /,/ ? v.split(',') : v }
       end
     when 'date'
-      Date.parse(value) if value.present?
+      if value.is_a? Date
+        value
+      else
+       Date.parse(value) if value.present?
+      end
     else
       value
     end
