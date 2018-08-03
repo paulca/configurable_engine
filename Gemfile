@@ -3,9 +3,9 @@ source 'https://rubygems.org'
 gem 'pry'
 gem 'rake'
 
+gem 'mysql2', '~> 0.4.10' # newer versions not compatible with rails 4.2
+gem 'pg', '~> 0.18' # newer versions not compatible with rails 4.2
 gem 'sqlite3'
-gem 'mysql2'
-gem 'pg'
 
 group :test do
   gem 'capybara'
