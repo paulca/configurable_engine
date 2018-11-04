@@ -144,6 +144,22 @@ To style the web interface you are advised to use Sass. Here's an example scss f
 
 Just save this into your rails assets and you're ready to go.
 
+## I18n ##
+
+For using I18n translation add this config to your locale file:
+
+```yaml
+#config/en.yml
+
+en:
+  configurable:
+    save_button: "Save config"
+    title: "Config my site"
+    success:
+      save: "Saved!"
+```
+
+
 ## Running the Tests ##
 
 The tests for this rails engine are in the `spec` and `features` directories.  They use the dummy rails app in `spec/dummy`

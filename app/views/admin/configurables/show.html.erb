@@ -1,7 +1,7 @@
 <div class='configurable-container'>
 
   <div class="header">
-    <h2>Config</h2>
+    <h2> <%= I18n.t('configurable.title', default: 'Config' ) %></h2>
   </div>
 
   <div class="configurable-options">
@@ -25,7 +25,7 @@
         </div>
       <%- end -%>
 
-      <%= submit_tag 'Save' %>
+      <%= submit_tag I18n.t('configurable.save_button', default: 'Save'), class: 'configurable button'  %>
     <%- end -%>
   </div>
 </div>
