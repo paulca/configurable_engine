@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.3.7
+  - 2.6.6
 env:
   - DB=sqlite
   - DB=mysql
