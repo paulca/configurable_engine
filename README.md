@@ -22,6 +22,12 @@ Then run the `configurable_engine:install` generator:
 $ rails generate configurable_engine:install
 ```
 
+this will
+- add config/configurable.yml
+- create a migration for your configurable table
+- mount the UI in your routes (defaulting to admin/configurables)
+
+
 ## Usage ##
 
 There are two parts to how configurable_engine works. First of all there is a config file, `config/configurable.yml`. This file controls the variables that are allowed to be set in the app.
@@ -58,7 +64,7 @@ and include `ConfigurableEngine::ConfigurablesController`, eg.
 ```ruby
 class Admin::ConfigurablesController < ApplicationController
   # include the engine controller actions
-  include ConfigurableEngine::ConfigurablesController
+  include ConfigurableEngine::ConfigurablesControllerMethods
 
   # add your own filter(s) / layout
   before_filter :protect_my_code

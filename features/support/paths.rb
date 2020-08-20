@@ -10,8 +10,8 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-    when /the config admin page/
-      admin_configurable_path
+    when /the config page/
+      ConfigurableEngine::Engine.routes.url_helpers.configurable_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
