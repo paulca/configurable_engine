@@ -1,4 +1,8 @@
-### v2.0.0 - August 20, 2020
+### v2.0.2 - August 20, 2020
+**bug fixes**
+fix rendering with included module
+
+### v2.0.1 - August 20, 2020
 **bug fixes**
 Can render layout of parent application
 

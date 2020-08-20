@@ -59,7 +59,7 @@ If you want to add a layout, or protect the configurable controller, create `app
 $ bundle exec rails generate controller admin/configurables
 ```
 
-and include `ConfigurableEngine::ConfigurablesController`, eg.
+include `ConfigurableEngine::ConfigurablesController`, eg.
 
 ```ruby
 class Admin::ConfigurablesController < ApplicationController
@@ -69,6 +69,19 @@ class Admin::ConfigurablesController < ApplicationController
   # add your own filter(s) / layout
   before_filter :protect_my_code
   layout 'admin'
+end
+```
+
+and replace
+```ruby
+route 'mount ConfigurableEngine::Engine, at: "/admin/configurable", as: "configurable"'
+```
+
+with
+
+```ruby
+namespace :admin do
+  resource :configurable, only: [:show, :update]
 end
 ```
 
