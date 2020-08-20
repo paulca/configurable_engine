@@ -5,7 +5,7 @@
   </div>
 
   <div class="configurable-options">
-    <%= form_tag(admin_configurable_path, :method => :put) do -%>
+    <%= form_tag(configurable_path, :method => :put) do -%>
       <%- @keys.each do |key| -%>
         <%- options = Configurable.defaults[key] -%>
         <div class="configurable">

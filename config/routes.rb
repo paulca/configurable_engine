@@ -1,5 +1,3 @@
-Rails.application.routes.draw do
-  namespace :admin do
-    resource :configurable
-  end
+ConfigurableEngine::Engine.routes.draw do
+  resource :configurable, path: '/'
 end

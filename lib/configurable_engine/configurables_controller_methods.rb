@@ -1,5 +1,5 @@
 module ConfigurableEngine
-  module ConfigurablesController
+  module ConfigurablesControllerMethods
     def show
       @keys = Configurable.keys
     end
@@ -15,10 +15,10 @@ module ConfigurableEngine
         end
 
       if failures.empty?
-        redirect_to admin_configurable_path, :notice => "Changes successfully updated"
+        redirect_to configurable_path, :notice => "Changes successfully updated"
       else
         flash[:error] = failures.flat_map(&:errors).flat_map(&:full_messages).join(',')
-        redirect_to admin_configurable_path
+        redirect_to configurable_path
       end
     end
   end
