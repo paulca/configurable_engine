@@ -111,7 +111,7 @@ describe Configurable do
       end
 
       it "should typecast the value" do
-        expect(Configurable.conversion_rate).to eq BigDecimal.new('1.2')
+        expect(Configurable.conversion_rate).to eq BigDecimal('1.2')
       end
     end
 

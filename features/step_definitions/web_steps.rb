@@ -151,7 +151,7 @@ Then /^the "([^"]*)" field(?: within "([^"]*)")? should contain "([^"]*)"$/ do |
     field = find_field(field)
     field_value = (field.tag_name == 'textarea') ? field.text : field.value
     if field_value.respond_to? :should
-      field_value.should =~ /#{value}/
+      expect(field_value).to match /#{value}/
     else
       assert_match(/#{value}/, field_value)
     end

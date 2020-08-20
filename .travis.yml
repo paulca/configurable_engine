@@ -1,14 +1,20 @@
 language: ruby
+cache: bundler
 rvm:
-  - 2.3.7
-env:
-  - DB=sqlite
-  - DB=mysql
-  - DB=postgresql
+  - 2.6.6
+
 gemfile:
   - Gemfile
 before_script:
-  - mysql -e 'create database strano_test'
-  - psql -c 'create database strano_test' -U postgres
+  - if [[ "$DB" == "mysql" ]]; then mysql -e 'create database strano_test'; fi
+  - if [[ "$DB" == "postgresql" ]]; then psql -c 'create database strano_test' -U postgres; fi
   - RAILS_ENV=test bundle exec rake app:db:migrate
   - bundle exec rake app:db:test:prepare
+
+jobs:
+  include:
+    - env: DB=sqlite
+    - env: DB=mysql
+      services: mysql
+    - env: DB=postgresql
+      services: postgresql 
