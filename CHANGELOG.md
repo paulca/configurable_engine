@@ -1,4 +1,8 @@
 ### v2.0.0 - August 20, 2020
+**bug fixes**
+Can render layout of parent application
+
+### v2.0.0 - August 20, 2020
 **features**
 Configurable_Engine is mountable. This allows folks to use it with a catch-all route
 
