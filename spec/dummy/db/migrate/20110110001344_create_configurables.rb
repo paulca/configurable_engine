@@ -1,4 +1,4 @@
-class CreateConfigurables < ActiveRecord::Migration
+class CreateConfigurables < ActiveRecord::Migration[5.2]
   def self.up
     create_table :configurables do |t|
       t.string :name
