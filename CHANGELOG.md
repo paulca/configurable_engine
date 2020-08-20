@@ -1,3 +1,10 @@
+### v1.0.0 - August 20, 2020
+**features**
+Official rails 5.2 support
+
+**breaking changes**
+No further support for rails < 5.2
+
 ### v0.5.0 - August 3, 2018
 **features**
 Official rails 4.2 support (Thanks @ento)

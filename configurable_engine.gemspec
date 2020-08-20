@@ -25,5 +25,5 @@ Gem::Specification.new do |spec|
   spec.rubygems_version = "2.0.3"
   spec.summary = "Database-backed configuration for Rails 4, with defaults from config file."
 
-  spec.add_dependency "rails", ">4.2.0"
+  spec.add_dependency "rails", ">5.2.0"
 end

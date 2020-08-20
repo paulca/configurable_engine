@@ -4,7 +4,7 @@ gem 'pry'
 gem 'rake'
 
 gem 'mysql2', '~> 0.5.3'
-gem 'pg', '~> 1.2.3' # newer versions not compatible with rails 4.2
+gem 'pg', '~> 1.2.3'
 gem 'sqlite3'
 
 group :test do
