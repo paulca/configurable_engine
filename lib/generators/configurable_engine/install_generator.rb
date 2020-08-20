@@ -22,7 +22,7 @@ class InstallGenerator < Rails::Generators::Base
     end
 
     def mount_interface
-      route 'mount ConfigurableEngine::Engine, at: "/admin/configurable"'
+      route 'mount ConfigurableEngine::Engine, at: "/admin/configurable", as: "configurable"'
     end
   end
 end

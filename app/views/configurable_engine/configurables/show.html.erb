@@ -1,11 +1,10 @@
 <div class='configurable-container'>
-
   <div class="header">
     <h2>Config</h2>
   </div>
 
   <div class="configurable-options">
-    <%= form_tag(configurable_path, :method => :put) do -%>
+    <%= form_tag({}, method: :put) do -%>
       <%- @keys.each do |key| -%>
         <%- options = Configurable.defaults[key] -%>
         <div class="configurable">

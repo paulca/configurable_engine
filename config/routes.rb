@@ -1,3 +1,3 @@
 ConfigurableEngine::Engine.routes.draw do
-  resource :configurable, path: '/'
+  resource :configurable, path: '/', only: [:show, :update]
 end
