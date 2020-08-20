@@ -33,6 +33,8 @@ module Dummy
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = true
 
+    config.load_defaults 5.2
+
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
 
