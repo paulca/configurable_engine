@@ -20,5 +20,9 @@ class InstallGenerator < Rails::Generators::Base
       copy_file 'configurable.yml', 'config/configurable.yml'
       migration_template 'migration.rb', 'db/migrate/create_configurables.rb'
     end
+
+    def mount_interface
+      route 'mount ConfigurableEngine::Engine, at: "/admin/configurable"'
+    end
   end
 end
