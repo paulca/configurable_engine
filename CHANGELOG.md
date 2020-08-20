@@ -1,3 +1,10 @@
+### v2.0.0 - August 20, 2020
+**features**
+Configurable_Engine is mountable. This allows folks to use it with a catch-all route
+
+**breaking changes**
+Existing users must add `mount ConfigurableEngine::Engine, at: "/admin/configurable"` to their routes.rb. Routing helpers may not work as they used to.
+
 ### v1.0.0 - August 20, 2020
 **features**
 Official rails 5.2 support
