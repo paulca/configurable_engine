@@ -4,8 +4,7 @@ class Configurable < ActiveRecord::Base
   after_save    :invalidate_cache, if: -> { ConfigurableEngine::Engine.config.use_cache }
   after_destroy :invalidate_cache, if: -> { ConfigurableEngine::Engine.config.use_cache }
 
-  validates_presence_of    :name
-  validates_uniqueness_of  :name
+  validates :name, presence: true, uniqueness: { case_sensitive: true }
 
   validate :type_of_value
   before_save :serialize_value
