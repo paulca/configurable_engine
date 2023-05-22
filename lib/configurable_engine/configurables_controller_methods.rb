@@ -18,7 +18,11 @@ module ConfigurableEngine
       if failures.empty?
         redirect_to(action: :show, :notice => "Changes successfully updated")
       else
-        flash[:error] = failures.flat_map(&:errors).flat_map(&:full_messages).join(',')
+        flash[:error] = failures.map { |c| [c, c.errors] }.flat_map { |c, e|
+          e.full_messages.map { |m|
+            "#{c.name} #{m.downcase}"
+          }
+        }.join(',')
         redirect_to(action: :show)
       end
     end
