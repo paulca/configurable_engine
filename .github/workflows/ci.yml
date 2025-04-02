@@ -24,7 +24,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup database
+      - name: Setup dev database
+        run: nix develop --command rake app:db:schema:load
+
+      - name: Setup test database
         run: RAILS_ENV=test nix develop --command rake app:db:test:prepare
 
       - name: Run tests
