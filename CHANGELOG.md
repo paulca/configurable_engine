@@ -1,3 +1,8 @@
+### v3.0.0 - April 2, 2025
+**breaking changes**
+Drops support for Rails < 7 and ruby < 3.2
+adds support for modern rails
+
 ### v2.0.2 - August 20, 2020
 **bug fixes**
 fix rendering with included module
