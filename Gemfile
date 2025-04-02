@@ -1,18 +1,18 @@
 source 'https://rubygems.org'
+# frozen_string_literal: true
 
-gem 'pry'
+gemspec
+
+# dev dependencies
+gem 'bundler'
+gem 'capybara'
+gem 'cucumber-rails', require: false
+gem 'database_cleaner'
+gem 'pry-byebug'
 gem 'rake'
-
-gem 'mysql2', '~> 0.5.3'
-gem 'pg', '~> 1.2.3'
+gem 'rspec'
+gem 'rspec-rails'
+gem 'rubocop'
+gem 'rubocop-rspec'
 gem 'sqlite3'
-
-group :test do
-  gem 'capybara'
-  gem 'cucumber-rails', require: false
-  gem 'database_cleaner'
-  gem 'rspec-rails'
-  gem 'rspec-collection_matchers'
-end
-
-gem 'rails', '~>5.2.0'
+gem 'yard'

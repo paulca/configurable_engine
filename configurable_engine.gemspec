@@ -16,14 +16,13 @@ Gem::Specification.new do |spec|
   ]
 
   spec.files         = Dir["*.txt", "*.md", "lib/**/*", "app/**/*", "config/**/*"] - ['config/cucumber.yml']
-  #re-enable test files when they're actually used.  In the mean time, lets leave them out to reduce our gem size.
-  #spec.test_files    = Dir['features/**/*', 'spec/**/*', 'gemfiles/**/*'] + %w{config/cucumber.yml .rspec tasks/cucumber.rake}
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
 
   spec.homepage = "http://github.com/paulca/configurable_engine"
   spec.licenses = ["MIT"]
   spec.require_paths = ["lib"]
-  spec.rubygems_version = "2.0.3"
-  spec.summary = "Database-backed configuration for Rails 4, with defaults from config file."
+  spec.rubygems_version = "3.5.22"
+  spec.summary = "Database-backed configuration for Rails 7, with defaults from config file."
 
-  spec.add_dependency "rails", ">5.2.0"
+  spec.add_dependency "rails", ">=7.0.0", "<8.0.0"
 end
