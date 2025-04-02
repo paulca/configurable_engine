@@ -247,6 +247,8 @@ GEM
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
       rspec-mocks (~> 3.13.0)
+    rspec-collection_matchers (1.2.1)
+      rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.13.3)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.3)
@@ -317,6 +319,7 @@ DEPENDENCIES
   pry-byebug
   rake
   rspec
+  rspec-collection_matchers
   rspec-rails
   rubocop
   rubocop-rspec

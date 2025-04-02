@@ -14,8 +14,8 @@ ActiveRecord::Schema[7.2].define(version: 2011_01_10_001344) do
   create_table "configurables", force: :cascade do |t|
     t.string "name"
     t.string "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["name"], name: "index_configurables_on_name"
   end
 end

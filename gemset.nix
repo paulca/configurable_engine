@@ -1100,6 +1100,19 @@
     targets = [];
     version = "3.13.0";
   };
+  rspec-collection_matchers = {
+    dependencies = ["rspec-expectations"];
+    groups = ["default"];
+    platforms = [];
+    source = {
+      remotes = ["https://rubygems.org"];
+      sha256 = "18jn7c9nhya3vwbb5i29vk3dkdvq9ilkjr5lzcvw4spipg92cxpz";
+      target = "ruby";
+      type = "gem";
+    };
+    targets = [];
+    version = "1.2.1";
+  };
   rspec-core = {
     dependencies = ["rspec-support"];
     groups = ["default"];

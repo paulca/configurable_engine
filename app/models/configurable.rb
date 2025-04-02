@@ -1,13 +1,10 @@
 class Configurable < ActiveRecord::Base
-  serialize :value
-
   after_save    :invalidate_cache, if: -> { ConfigurableEngine::Engine.config.use_cache }
   after_destroy :invalidate_cache, if: -> { ConfigurableEngine::Engine.config.use_cache }
 
   validates :name, presence: true, uniqueness: { case_sensitive: true }
 
   validate :type_of_value
-  before_save :serialize_value
 
   def self.defaults
     @defaults ||= HashWithIndifferentAccess.new(
@@ -26,7 +23,7 @@ class Configurable < ActiveRecord::Base
     if exisiting
       exisiting.update_attribute(:value, value)
     else
-      create {|c| c.name = key.to_s; c.value = value}
+      create {|c| c.name = key.to_s; c.value = Configurable.value_for_serialization key, value}
     end
   end
 
