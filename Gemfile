@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 # frozen_string_literal: true
 
@@ -11,8 +13,8 @@ gem 'database_cleaner'
 gem 'pry-byebug'
 gem 'rake'
 gem 'rspec'
-gem 'rspec-rails'
 gem 'rspec-collection_matchers'
+gem 'rspec-rails'
 gem 'rubocop'
 gem 'rubocop-rspec'
 gem 'sqlite3'

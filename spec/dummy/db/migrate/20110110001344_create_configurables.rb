@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateConfigurables < ActiveRecord::Migration[5.2]
   def self.up
     create_table :configurables do |t|
@@ -6,7 +8,7 @@ class CreateConfigurables < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    
+
     add_index :configurables, :name
   end
 

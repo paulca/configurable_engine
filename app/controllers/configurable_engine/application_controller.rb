@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module ConfigurableEngine
   class ApplicationController < ActionController::Base
-    layout "configurable_engine/application"
+    layout 'configurable_engine/application'
     protect_from_forgery with: :exception
   end
 end

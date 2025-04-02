@@ -1,0 +1,41 @@
+inherit_from: .rubocop_todo.yml
+AllCops:
+  NewCops: enable
+  SuggestExtensions:
+    rubocop-rails: false
+
+plugins:
+  - rubocop-rspec
+
+# This prevents us from inlining code, which we think
+# is often better then having lots if out-of-order method calls
+Metrics/AbcSize:
+  Enabled: false
+
+# This prevents us from co-locating functional code, which we think
+# is often better then having lots of stateless files.
+Metrics/ClassLength:
+  Enabled: false
+
+# This prevents us from inlining code, which we think
+# is often better then having lots if out-of-order method calls
+Metrics/MethodLength:
+  Enabled: false
+
+# This prevents us from inlining code, which we think
+# is often better then having lots if out-of-order method calls
+Metrics/ModuleLength:
+  Enabled: false
+
+# This prevents us from inlining which we like. We like inlining!
+RSpec/ExampleLength:
+  Enabled: False
+
+# We believe that inlining is valuable and expecting one expectation
+# forces us to avoid inlining.
+RSpec/MultipleExpectations:
+  Enabled: False
+
+# explicit makes specs easier to read
+RSpec/DescribedClass:
+  EnforcedStyle: explicit

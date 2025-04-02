@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module ConfigurableEngine
   class Engine < ::Rails::Engine
-    engine_name "configurable"
+    engine_name 'configurable'
     isolate_namespace ConfigurableEngine
     config.use_cache = false
     config.generators do |g|

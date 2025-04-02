@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if Rails.env.test? && !defined?(ActiveSupport::Cache::NullStore)
   module ActiveSupport
     module Cache
@@ -10,36 +12,32 @@ if Rails.env.test? && !defined?(ActiveSupport::Cache::NullStore)
       # ActiveSupport::Cache::Strategy::LocalCache for more details.
       class NullStore < Store
         def initialize(options = nil)
-          super(options)
+          super
           extend Strategy::LocalCache
         end
 
-        def clear(options = nil)
-        end
+        def clear(options = nil); end
 
-        def cleanup(options = nil)
-        end
+        def cleanup(options = nil); end
 
-        def increment(name, amount = 1, options = nil)
-        end
+        def increment(name, amount = 1, options = nil); end
 
-        def decrement(name, amount = 1, options = nil)
-        end
+        def decrement(name, amount = 1, options = nil); end
 
-        def delete_matched(matcher, options = nil)
-        end
+        def delete_matched(matcher, options = nil); end
 
         protected
-          def read_entry(key, options) # :nodoc:
-          end
 
-          def write_entry(key, entry, options) # :nodoc:
-            true
-          end
+        def read_entry(key, options) # :nodoc:
+        end
 
-          def delete_entry(key, options) # :nodoc:
-            false
-          end
+        def write_entry(_key, _entry, _options) # :nodoc:
+          true
+        end
+
+        def delete_entry(_key, _options) # :nodoc:
+          false
+        end
       end
     end
   end
@@ -62,9 +60,9 @@ Dummy::Application.configure do
   config.action_dispatch.show_exceptions = false
 
   # Disable request forgery protection in test environment
-  config.action_controller.allow_forgery_protection    = false
+  config.action_controller.allow_forgery_protection = false
 
-  # Disable caching during tests, 
+  # Disable caching during tests,
   # can't use :null_store syntax because of Rails 3.1
   config.cache_store = ActiveSupport::Cache::NullStore.new
 
