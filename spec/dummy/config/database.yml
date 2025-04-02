@@ -1,35 +1,13 @@
-# config/database.travis.yml
-
-<%
-def db_name(env)
-  (ENV['DB'] || 'sqlite') == 'sqlite' ? "db/#{env}.sqlite3" : "strano_#{env}"
-end
-%>
-
-sqlite: &sqlite
-  adapter: sqlite3
-
-mysql: &mysql
-  adapter: mysql2
-  username: root
-  password:
-
-postgresql: &postgresql
-  adapter: postgresql
-  username: postgres
-  password:
-  min_messages: ERROR
-
 defaults: &defaults
   pool: 5
   timeout: 5000
   host: localhost
-  <<: *<%= ENV['DB'] || "sqlite" %>
+  adapter: sqlite3
 
 development:
-  database: <%= db_name(:development) %>
   <<: *defaults
+  database: db/development.sqlite3
 
 test:
-  database: <%= db_name(:test) %>
   <<: *defaults
+  database: db/test.sqlite3

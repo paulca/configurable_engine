@@ -1,7 +1,9 @@
-ENV["RAILS_ENV"] ||= "test"
-dummy_path = File.expand_path('../../../spec/dummy', __FILE__)
+# frozen_string_literal: true
+
+ENV['RAILS_ENV'] ||= 'test'
+dummy_path = File.expand_path('../../spec/dummy', __dir__)
 require File.join(dummy_path, 'config', 'environment')
-ENV["RAILS_ROOT"] ||= dummy_path
+ENV['RAILS_ROOT'] ||= dummy_path
 
 require 'cucumber/rails'
 
@@ -33,7 +35,7 @@ ActionController::Base.allow_rescue = false
 begin
   DatabaseCleaner.strategy = :transaction
 rescue NameError
-  raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
+  raise 'You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it.'
 end
 
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.

@@ -1,0 +1,40 @@
+name: Run tests
+on:
+  pull_request:
+    branches:
+      - "master"
+  push:
+    branches:
+      - "master"
+
+  # We also provide a way to run this manually, if needed.
+  workflow_dispatch:
+
+jobs:
+  ci:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup dev database
+        run: nix develop --command rake app:db:schema:load
+
+      - name: Setup test database
+        run: RAILS_ENV=test nix develop --command rake app:db:test:prepare
+
+      - name: Run tests
+        run: nix develop --command rake
+
+      - name: Run rubocop
+        run: nix develop --command rubocop
+
+      - name: Run nix formatter
+        run: nix fmt -- --check .
